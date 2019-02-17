@@ -1,0 +1,417 @@
+﻿@using System.Web.Optimization
+@model Rent_Flat.Models.BusquedaModel
+@{
+    ViewBag.Title = "Index";
+    List<SelectListItem> tiposVivienda = ViewBag.TiposVivienda;
+    List<SelectListItem> listaCostas = ViewBag.ListaCostas;
+}
+
+@Styles.Render("~/homestyles")
+<h2>Index</h2>
+
+<div class="home">
+
+    <!-- Home Slider -->
+    <div class="home_slider_container">
+        <div class="owl-carousel owl-theme home_slider">
+
+            <!-- Slide -->
+            <div class="owl-item">
+                <div class="home_slider_background" style="background-image:url(/Content/Front/images/home_slider_1.jpg)"></div>
+
+                <div class="slide_container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="slide_content">
+                                    <div class="home_subtitle">super oferta</div>
+                                    <div class="home_title">Villa disponible</div>
+                                    <div class="home_details">
+                                        <ul class="home_details_list d-flex flex-row align-items-center justify-content-start">
+                                            <li>
+                                                <div class="home_details_image"><img src="~/Content/Front/images/icon_1.png" alt=""></div>
+                                                <span> 550 m.</span>
+                                            </li>
+                                            <li>
+                                                <div class="home_details_image"><img src="~/Content/Front/images/icon_2.png" alt=""></div>
+                                                <span> 3 habitaciones</span>
+                                            </li>
+                                            <li>
+                                                <div class="home_details_image"><img src="~/Content/Front/images/icon_3.png" alt=""></div>
+                                                <span> 2 baños</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="home_price">1650 €</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide -->
+            <div class="owl-item">
+                <div class="home_slider_background" style="background-image:url(/Content/Front/images/home_slider_1.jpg)"></div>
+                <div class="slide_container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="slide_content">
+                                    <div class="home_subtitle">super oferta</div>
+                                    <div class="home_title">Villa disponible</div>
+                                    <div class="home_details">
+                                        <ul class="home_details_list d-flex flex-row align-items-center justify-content-start">
+                                            <li>
+                                                <div class="home_details_image"><img src="~/Content/Front/images/icon_1.png" alt=""></div>
+                                                <span> 550 m.</span>
+                                            </li>
+                                            <li>
+                                                <div class="home_details_image"><img src="~/Content/Front/images/icon_2.png" alt=""></div>
+                                                <span> 3 habitaciones</span>
+                                            </li>
+                                            <li>
+                                                <div class="home_details_image"><img src="~/Content/Front/images/icon_3.png" alt=""></div>
+                                                <span> 2 baños</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="home_price">1650 €</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide -->
+            <div class="owl-item">
+                <div class="home_slider_background" style="background-image:url(/Content/Front/images/home_slider_1.jpg)"></div>
+                <div class="slide_container">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+                                <div class="slide_content">
+                                    <div class="home_subtitle">super oferta</div>
+                                    <div class="home_title">Villa disponible</div>
+                                    <div class="home_details">
+                                        <ul class="home_details_list d-flex flex-row align-items-center justify-content-start">
+                                            <li>
+                                                <div class="home_details_image"><img src="~/Content/Front/images/icon_1.png" alt=""></div>
+                                                <span>  550 m.</span>
+                                            </li>
+                                            <li>
+                                                <div class="home_details_image"><img src="~/Content/Front/images/icon_2.png" alt=""></div>
+                                                <span> 3 habitaciones</span>
+                                            </li>
+                                            <li>
+                                                <div class="home_details_image"><img src="~/Content/Front/images/icon_3.png" alt=""></div>
+                                                <span> 3 baños</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="home_price">16500 €</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@*j*@
+<!-- Home Search -->
+<div class="home_search">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="home_search_container">
+                    <div class="home_search_content">
+                        @using (Html.BeginForm("GetPisos","Home", FormMethod.Post, new { @class = "search_form d-flex flex-row align-items-start justfy-content-start" }))
+                        {
+                            @*<form action="#" class="search_form d-flex flex-row align-items-start justfy-content-start">*@
+                                <div class="search_form_content d-flex flex-row align-items-start justfy-content-start flex-wrap">
+                                    @*<div>
+                        <select class="search_form_select">
+                            <option disabled selected>For rent</option>
+                            <option>Yes</option>
+                            <option>No</option>
+                        </select>
+                    </div>*@
+                                    <div>
+                                        @Html.DropDownListFor(x => Model.TiposVivienda, Model.TiposVivienda, new { @class = "search_form_select" })
+                                        @*@Html.DropDownListFor("Tipos Vivienda",tiposVivienda, new { @class="search_form_select"})*@
+                                    </div>
+                                    <div>
+                                        @Html.DropDownListFor(x => Model.ListaCostas, Model.ListaCostas, new { @class = "search_form_select" })
+                                        @*@Html.DropDownList("Costas", listaCostas, new { @class="search_form_select"})*@
+                                    </div>
+                                    <div>
+                                        @Html.DropDownListFor(x => Model.NumeroHabitaciones, Model.NumeroHabitaciones, new { @class = "search_form_select" })
+                                    </div>
+                                    <div>
+                                        @Html.DropDownListFor(x => Model.NumeroBanios, Model.NumeroBanios, new { @class = "search_form_select" })
+                                    </div>
+                                </div>
+                                <input type="submit" value="GetPisos" class="search_form_button ml-auto" />
+                                }
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent -->
+
+@*<div class="recent">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title">Recent Properties</div>
+                <div class="section_subtitle">Search your dream home</div>
+            </div>
+        </div>
+        <div class="row recent_row">
+            <div class="col">
+                <div class="recent_slider_container">
+                    <div class="owl-carousel owl-theme recent_slider">
+
+                        <!-- Slide -->
+                        <div class="owl-item">
+                            <div class="recent_item">
+                                <div class="recent_item_inner">
+                                    <div class="recent_item_image">
+                                        <img src="~/Content/Front/images/property_1.jpg" alt="">
+                                        <div class="tag_featured property_tag"><a href="#">Featured</a></div>
+                                    </div>
+                                    <div class="recent_item_body text-center">
+                                        <div class="recent_item_location">Miami</div>
+                                        <div class="recent_item_title"><a href="property.html">Sea view property</a></div>
+                                        <div class="recent_item_price">$ 1. 234 981</div>
+                                    </div>
+                                    <div class="recent_item_footer d-flex flex-row align-items-center justify-content-start">
+                                        <div><div class="recent_icon"><img src="~/Content/Front/images/icon_1.png" alt=""></div><span>650 Ftsq</span></div>
+                                        <div><div class="recent_icon"><img src="~/Content/Front/images/icon_2.png" alt=""></div><span>3 Bedrooms</span></div>
+                                        <div><div class="recent_icon"><img src="~/Content/Front/images/icon_3.png" alt=""></div><span>3 Bathrooms</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide -->
+                        <div class="owl-item">
+                            <div class="recent_item">
+                                <div class="recent_item_inner">
+                                    <div class="recent_item_image">
+                                        <img src="~/Content/Front/images/property_2.jpg" alt="">
+                                        <div class="tag_offer property_tag"><a href="#">Offer</a></div>
+                                    </div>
+                                    <div class="recent_item_body text-center">
+                                        <div class="recent_item_location">Los Angeles</div>
+                                        <div class="recent_item_title"><a href="property.html">2 Floor Town House</a></div>
+                                        <div class="recent_item_price">$ 1. 234 981</div>
+                                    </div>
+                                    <div class="recent_item_footer d-flex flex-row align-items-center justify-content-start">
+                                        <div><div class="recent_icon"><img src="~/Content/Front/images/icon_1.png" alt=""></div><span>650 Ftsq</span></div>
+                                        <div><div class="recent_icon"><img src="~/Content/Front/images/icon_2.png" alt=""></div><span>3 Bedrooms</span></div>
+                                        <div><div class="recent_icon"><img src="~/Content/Front/images/icon_3.png" alt=""></div><span>3 Bathrooms</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Slide -->
+                        <div class="owl-item">
+                            <div class="recent_item">
+                                <div class="recent_item_inner">
+                                    <div class="recent_item_image">
+                                        <img src="~/Content/Front/images/property_3.jpg" alt="">
+                                        <div class="tag_featured property_tag"><a href="#">Featured</a></div>
+                                    </div>
+                                    <div class="recent_item_body text-center">
+                                        <div class="recent_item_location">Florida</div>
+                                        <div class="recent_item_title"><a href="property.html">Vacation Home</a></div>
+                                        <div class="recent_item_price">$ 1. 234 981</div>
+                                    </div>
+                                    <div class="recent_item_footer d-flex flex-row align-items-center justify-content-start">
+                                        <div><div class="recent_icon"><img src="~/Content/Front/images/icon_1.png" alt=""></div><span>650 Ftsq</span></div>
+                                        <div><div class="recent_icon"><img src="~/Content/Front/images/icon_2.png" alt=""></div><span>3 Bedrooms</span></div>
+                                        <div><div class="recent_icon"><img src="~/Content/Front/images/icon_3.png" alt=""></div><span>3 Bathrooms</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="recent_slider_nav_container d-flex flex-row align-items-start justify-content-start">
+                        <div class="recent_slider_nav recent_slider_prev"><i class="fa fa-chevron-left" aria-hidden="true"></i></div>
+                        <div class="recent_slider_nav recent_slider_next"><i class="fa fa-chevron-right" aria-hidden="true"></i></div>
+                    </div>
+                </div>
+                <div class="button recent_button"><a href="#">see more</a></div>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+<!-- Cities -->
+
+<div class="cities">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title">Find properties in these cities</div>
+                <div class="section_subtitle">Search your dream home</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="cities_container d-flex flex-row flex-wrap align-items-start justify-content-between">
+
+        <!-- City -->
+        <div class="city">
+            <img src="~/Content/Front/images/city_1.jpg">
+            <div class="city_overlay">
+                <a href="#" class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="city_title">Ibiza Town</div>
+                    <div class="city_subtitle">Rentals from $450/month</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- City -->
+        <div class="city">
+            <img src="~/Content/Front/images/city_2.jpg">
+            <div class="city_overlay">
+                <a href="#" class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="city_title">Ibiza Town</div>
+                    <div class="city_subtitle">Rentals from $450/month</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- City -->
+        <div class="city">
+            <img src="~/Content/Front/images/city_3.jpg">
+            <div class="city_overlay">
+                <a href="#" class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="city_title">Ibiza Town</div>
+                    <div class="city_subtitle">Rentals from $450/month</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- City -->
+        <div class="city">
+            <img src="~/Content/Front/images/city_4.jpg">
+            <div class="city_overlay">
+                <a href="#" class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="city_title">Ibiza Town</div>
+                    <div class="city_subtitle">Rentals from $450/month</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- City -->
+        <div class="city">
+            <img src="~/Content/Front/images/city_5.jpg">
+            <div class="city_overlay">
+                <a href="#" class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="city_title">Ibiza Town</div>
+                    <div class="city_subtitle">Rentals from $450/month</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- City -->
+        <div class="city">
+            <img src="~/Content/Front/images/city_6.jpg">
+            <div class="city_overlay">
+                <a href="#" class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="city_title">Ibiza Town</div>
+                    <div class="city_subtitle">Rentals from $450/month</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- City -->
+        <div class="city">
+            <img src="~/Content/Front/images/city_7.jpg">
+            <div class="city_overlay">
+                <a href="#" class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="city_title">Ibiza Town</div>
+                    <div class="city_subtitle">Rentals from $450/month</div>
+                </a>
+            </div>
+        </div>
+
+        <!-- City -->
+        <div class="city">
+            <img src="~/Content/Front/images/city_8.jpg">
+            <div class="city_overlay">
+                <a href="#" class="d-flex flex-column align-items-center justify-content-center">
+                    <div class="city_title">Ibiza Town</div>
+                    <div class="city_subtitle">Rentals from $450/month</div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonials -->
+
+<div class="testimonials">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title">Lo que opninan nuestros clientes</div>
+                <div class="section_subtitle">Busca la casa de tus sueños</div>
+            </div>
+        </div>
+        <div class="row testimonials_row">
+
+            <!-- Testimonial Item -->
+            <div class="col-lg-4 testimonial_col">
+                <div class="testimonial">
+                    <div class="testimonial_title">Encantada con Rent a flat</div>
+                    <div class="testimonial_text">“Mi experiencia ha sido positiva, sobre todo a la hora de asesoramiento en cuanto a la elección de los mejores pisos y negociación de precios, atención cercana y personalizada."</div>
+                    <div class="testimonial_author_image"><img src="~/Content/Front/images/testimonial_1.jpg" alt=""></div>
+                    <div class="testimonial_author"><a href="#">Claudia Castillo</a><span>, Cliente</span></div>
+                    <div class="rating_r rating_r_5 testimonial_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                </div>
+            </div>
+
+            <!-- Testimonial Item -->
+            <div class="col-lg-4 testimonial_col">
+                <div class="testimonial">
+                    <div class="testimonial_title">Son gente de confianza</div>
+                    <div class="testimonial_text"> Más que un gestor inmobiliario, un socio en quien confiar. Sin duda repetiría la experiencia en caso de requerir de nuevo de sus servicios”</div>
+                    <div class="testimonial_author_image"><img src="~/Content/Front/images/testimonial_2.jpg" alt=""></div>
+                    <div class="testimonial_author"><a href="#">Isaac Ávila</a><span>, Cliente</span></div>
+                    <div class="rating_r rating_r_5 testimonial_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                </div>
+            </div>
+
+            <!-- Testimonial Item -->
+            <div class="col-lg-4 testimonial_col">
+                <div class="testimonial">
+                    <div class="testimonial_title">Muy profesionales</div>
+                    <div class="testimonial_text">Generaron confianza a lo largo del proceso, con seriedad, interés y profesionalidad y se demostró que eran la mejor opción.</div>
+                    <div class="testimonial_author_image"><img src="~/Content/Front/images/testimonial_3.jpg" alt=""></div>
+                    <div class="testimonial_author"><a href="#">Renji Mimpal</a><span>, Cliente</span></div>
+                    <div class="rating_r rating_r_5 testimonial_rating"><i></i><i></i><i></i><i></i><i></i></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/homescripts")
+
+

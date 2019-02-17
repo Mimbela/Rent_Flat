@@ -1,0 +1,54 @@
+﻿@model IEnumerable<RepositorioRentFlat.Context.Tipos_Vivienda>
+
+@{
+    ViewBag.Title = "GetTiposVivienda";
+    Layout = "~/Views/Shared/PlantillaBack.cshtml";
+}
+
+<h2>GetTiposVivienda</h2>
+
+<p>
+    @Html.ActionLink("Crear Tipo de Vivienda", "Create", new { }, new { @class = "btn btn-outline-primary" })
+</p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive table--no-card m-b-30">
+                <table class="table table-borderless table-striped table-earning">
+                    <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Cod_tipo_vivienda)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Descripcion)
+                        </th>
+                        <th></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cod_tipo_vivienda)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Descripcion)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Modificar", "Edit", new { id = item.Cod_tipo_vivienda }, new { @class = "btn btn-outline-info" })
+                                    @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                                    @Html.ActionLink("Delete", "Delete", new { id=item.Cod_tipo_vivienda })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+                  
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

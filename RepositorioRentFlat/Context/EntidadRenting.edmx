@@ -1,0 +1,306 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RentingModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApellidoCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailCliente" Type="nvarchar" MaxLength="150" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ciudad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dni" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefono" Type="int" />
+        </EntityType>
+        <EntityType Name="Costas">
+          <Key>
+            <PropertyRef Name="Cod_Provincia" />
+          </Key>
+          <Property Name="Cod_Provincia" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NombreProvincia" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Foto" Type="image" />
+        </EntityType>
+        <EntityType Name="Galeria_Fotos">
+          <Key>
+            <PropertyRef Name="Cod_imagen" />
+          </Key>
+          <Property Name="Cod_imagen" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cod_casa" Type="int" Nullable="false" />
+          <Property Name="Foto" Type="image" />
+          <Property Name="Orden" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Precios_Vivienda">
+          <Key>
+            <PropertyRef Name="Cod_Precio" />
+          </Key>
+          <Property Name="Cod_Precio" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cod_casa" Type="int" Nullable="false" />
+          <Property Name="Precio" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Fecha_alta" Type="date" Nullable="false" />
+          <Property Name="Fecha_baja" Type="date" />
+          <Property Name="Precio_activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipos_Vivienda">
+          <Key>
+            <PropertyRef Name="Cod_tipo_vivienda" />
+          </Key>
+          <Property Name="Cod_tipo_vivienda" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Cod_usuario" />
+          </Key>
+          <Property Name="Cod_usuario" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="64" />
+          <Property Name="Nombre" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Apellido" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DIR" Type="int" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="150" />
+          <Property Name="Telefono" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mostrar_info_contacto" Type="bit" Nullable="false" />
+          <Property Name="Perfil" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Viviendas">
+          <Key>
+            <PropertyRef Name="Cod_casa" />
+          </Key>
+          <Property Name="Cod_casa" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cod_Provincia" Type="int" Nullable="false" />
+          <Property Name="IdCliente" Type="int" />
+          <Property Name="Ubicacion" Type="nvarchar" MaxLength="150" Nullable="false" />
+          <Property Name="Codigo_Posta" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="Ciudad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Num_habitaciones" Type="int" Nullable="false" />
+          <Property Name="Num_banios" Type="int" Nullable="false" />
+          <Property Name="Tamanio_vivienda" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="nvarchar" MaxLength="1000" Nullable="false" />
+          <Property Name="Garaje" Type="bit" Nullable="false" />
+          <Property Name="Cod_TipoVivienda" Type="int" />
+        </EntityType>
+        <EntityContainer Name="RentingModelStoreContainer">
+          <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Costas" EntityType="Self.Costas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Galeria_Fotos" EntityType="Self.Galeria_Fotos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Precios_Vivienda" EntityType="Self.Precios_Vivienda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tipos_Vivienda" EntityType="Self.Tipos_Vivienda" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Viviendas" EntityType="Self.Viviendas" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RentingModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Costas">
+          <Key>
+            <PropertyRef Name="Cod_Provincia" />
+          </Key>
+          <Property Name="Cod_Provincia" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreProvincia" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Galeria_Fotos">
+          <Key>
+            <PropertyRef Name="Cod_imagen" />
+          </Key>
+          <Property Name="Cod_imagen" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cod_casa" Type="Int32" Nullable="false" />
+          <Property Name="Foto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Orden" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Precios_Vivienda">
+          <Key>
+            <PropertyRef Name="Cod_Precio" />
+          </Key>
+          <Property Name="Cod_Precio" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cod_casa" Type="Int32" Nullable="false" />
+          <Property Name="Precio" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="Fecha_alta" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Fecha_baja" Type="DateTime" Precision="0" />
+          <Property Name="Precio_activo" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tipos_Vivienda">
+          <Key>
+            <PropertyRef Name="Cod_tipo_vivienda" />
+          </Key>
+          <Property Name="Cod_tipo_vivienda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="EntidadRenting" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Costas" EntityType="Self.Costas" />
+          <EntitySet Name="Galeria_Fotos" EntityType="Self.Galeria_Fotos" />
+          <EntitySet Name="Precios_Vivienda" EntityType="Self.Precios_Vivienda" />
+          <EntitySet Name="Tipos_Vivienda" EntityType="Self.Tipos_Vivienda" />
+          <EntitySet Name="Clientes" EntityType="RentingModel.Clientes" />
+          <EntitySet Name="Viviendas" EntityType="RentingModel.Viviendas" />
+          <EntitySet Name="Usuarios" EntityType="RentingModel.Usuarios" />
+        </EntityContainer>
+        <EntityType Name="Clientes">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NombreCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApellidoCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailCliente" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dni" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Viviendas">
+          <Key>
+            <PropertyRef Name="Cod_casa" />
+          </Key>
+          <Property Name="Cod_casa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cod_Provincia" Type="Int32" Nullable="false" />
+          <Property Name="IdCliente" Type="Int32" />
+          <Property Name="Ubicacion" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Codigo_Posta" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="Ciudad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Num_habitaciones" Type="Int32" Nullable="false" />
+          <Property Name="Num_banios" Type="Int32" Nullable="false" />
+          <Property Name="Tamanio_vivienda" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="Garaje" Type="Boolean" Nullable="false" />
+          <Property Name="Cod_TipoVivienda" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="Cod_usuario" />
+          </Key>
+          <Property Name="Cod_usuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DIR" Type="Int32" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mostrar_info_contacto" Type="Boolean" Nullable="false" />
+          <Property Name="Perfil" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RentingModelStoreContainer" CdmEntityContainer="EntidadRenting">
+          <EntitySetMapping Name="Costas">
+            <EntityTypeMapping TypeName="RentingModel.Costas">
+              <MappingFragment StoreEntitySet="Costas">
+                <ScalarProperty Name="Cod_Provincia" ColumnName="Cod_Provincia" />
+                <ScalarProperty Name="NombreProvincia" ColumnName="NombreProvincia" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Galeria_Fotos">
+            <EntityTypeMapping TypeName="RentingModel.Galeria_Fotos">
+              <MappingFragment StoreEntitySet="Galeria_Fotos">
+                <ScalarProperty Name="Cod_imagen" ColumnName="Cod_imagen" />
+                <ScalarProperty Name="Cod_casa" ColumnName="Cod_casa" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="Orden" ColumnName="Orden" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Precios_Vivienda">
+            <EntityTypeMapping TypeName="RentingModel.Precios_Vivienda">
+              <MappingFragment StoreEntitySet="Precios_Vivienda">
+                <ScalarProperty Name="Cod_Precio" ColumnName="Cod_Precio" />
+                <ScalarProperty Name="Cod_casa" ColumnName="Cod_casa" />
+                <ScalarProperty Name="Precio" ColumnName="Precio" />
+                <ScalarProperty Name="Fecha_alta" ColumnName="Fecha_alta" />
+                <ScalarProperty Name="Fecha_baja" ColumnName="Fecha_baja" />
+                <ScalarProperty Name="Precio_activo" ColumnName="Precio_activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tipos_Vivienda">
+            <EntityTypeMapping TypeName="RentingModel.Tipos_Vivienda">
+              <MappingFragment StoreEntitySet="Tipos_Vivienda">
+                <ScalarProperty Name="Cod_tipo_vivienda" ColumnName="Cod_tipo_vivienda" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clientes">
+            <EntityTypeMapping TypeName="RentingModel.Clientes">
+              <MappingFragment StoreEntitySet="Clientes">
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Dni" ColumnName="Dni" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="EmailCliente" ColumnName="EmailCliente" />
+                <ScalarProperty Name="ApellidoCliente" ColumnName="ApellidoCliente" />
+                <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Viviendas">
+            <EntityTypeMapping TypeName="RentingModel.Viviendas">
+              <MappingFragment StoreEntitySet="Viviendas">
+                <ScalarProperty Name="Cod_TipoVivienda" ColumnName="Cod_TipoVivienda" />
+                <ScalarProperty Name="Garaje" ColumnName="Garaje" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Tamanio_vivienda" ColumnName="Tamanio_vivienda" />
+                <ScalarProperty Name="Num_banios" ColumnName="Num_banios" />
+                <ScalarProperty Name="Num_habitaciones" ColumnName="Num_habitaciones" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Codigo_Posta" ColumnName="Codigo_Posta" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Cod_Provincia" ColumnName="Cod_Provincia" />
+                <ScalarProperty Name="Cod_casa" ColumnName="Cod_casa" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="RentingModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="Perfil" ColumnName="Perfil" />
+                <ScalarProperty Name="Mostrar_info_contacto" ColumnName="Mostrar_info_contacto" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="DIR" ColumnName="DIR" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Cod_usuario" ColumnName="Cod_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

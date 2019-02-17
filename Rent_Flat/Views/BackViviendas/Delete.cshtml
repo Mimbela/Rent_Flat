@@ -1,0 +1,114 @@
+﻿@model RepositorioRentFlat.Context.Viviendas
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/PlantillaBack.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Viviendas</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Cod_casa)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cod_casa)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cod_Provincia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cod_Provincia)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdCliente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdCliente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ubicacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ubicacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Codigo_Posta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Codigo_Posta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ciudad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ciudad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Num_habitaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Num_habitaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Num_banios)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Num_banios)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tamanio_vivienda)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tamanio_vivienda)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Garaje)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Garaje)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        @Html.ActionLink("Eliminar", "EliminarViviendas", new { id = Model.Cod_casa }, new { @class = "btn btn-success" }) |
+
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+    }
+</div>

@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/PlantillaBack.cshtml";
+}
+
+<h2>Login de empleados</h2>
+@using (Html.BeginForm())
+{
+    <div>
+        <label>Usuario</label>
+        <input type="text" name="login" class="form-control" placeholder="usuario" />
+
+    </div>
+
+    <div>
+        <label>Contraseña</label>
+        <input type="text" name="password" class="form-control" placeholder="contraseña" />
+
+    </div>
+    <div>
+        <button type="submit" class="btn-success">LOG IN</button>
+    </div>
+}
+
+<h1>@ViewBag.Mensaje</h1>
+
+

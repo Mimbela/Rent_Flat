@@ -1,0 +1,30 @@
+EN COMÚN
+"styles/bootstrap4/bootstrap.min.css",
+"plugins/font-awesome-4.7.0/css/font-awesome.min.css",
+"plugins/OwlCarousel2-2.2.1/owl.carousel.css",
+"plugins/OwlCarousel2-2.2.1/owl.theme.default.css",
+"plugins/OwlCarousel2-2.2.1/animate.css",
+
+HOME
+
+"styles/main_styles.css",
+"styles/responsive.css",
+
+
+ABOUT AS
+
+"styles/about.css",
+"styles/about_responsive.css",
+
+
+PROPERTIES
+
+"styles/properties.css",
+"styles/properties_responsive.css",
+
+
+CONTACT
+
+"plugins/rangeslider.js-2.3.0/rangeslider.css",
+"styles/contact.css",
+"styles/contact_responsive.css"
