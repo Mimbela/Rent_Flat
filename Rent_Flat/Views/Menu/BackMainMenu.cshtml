@@ -6,18 +6,46 @@
         </a>
     </li>
 
-    <li>
+    @*<li>
         <a href="@Url.Action("BusquedaViviendas","BackViviendas")">
             <i class="fas fa-table"></i>Tables
         </a>
-    </li>
+    </li>*@
+    @*<li>
+            <a href="form.html">
+                <i class="far fa-check-square"></i>Forms
+            </a>
+        </li>*@
+
     <li>
-        <a href="form.html">
-            <i class="far fa-check-square"></i>Forms
+        <a href="@Url.Action("Nombre_Costas","BackCostas")">
+            <i class="far fa-check-square"></i>COSTAS
         </a>
     </li>
+
+
+    <li>
+        <a href="@Url.Action("GetTiposVivienda","BackTipoVivienda")">
+            <i class="far fa-check-square"></i>TIPO DE VIVIENDAS
+        </a>
+    </li>
+
+    <li>
+        <a href="@Url.Action("Usuarios","BackUsuarios")">
+            <i class="far fa-check-square"></i>USUARIOS
+        </a>
+    </li>
+
+
+
+    <li>
+        <a href="@Url.Action("Viviendas","BackViviendas")">
+            <i class="far fa-check-square"></i>DETALLES DE VIVIENDAS
+        </a>
+    </li>
+
     <!--<li>
-        <a href="chart.html">
+        /*Html.ActionLink("COSTAS", "Nombre_Costas", "BackCostas")*/
             <i class="fas fa-chart-bar"></i>Charts
         </a>
     </li>

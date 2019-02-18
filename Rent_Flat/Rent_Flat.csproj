@@ -460,6 +460,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Views\Error\401.html" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -474,6 +475,7 @@
     <Compile Include="Controllers\BackTipoViviendaController.cs" />
     <Compile Include="Controllers\BackUsuariosController.cs" />
     <Compile Include="Controllers\BackViviendasController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\PaginasSecundariasController.cs" />
@@ -552,6 +554,8 @@
     <Content Include="Views\BackTipoVivienda\Delete.cshtml" />
     <Content Include="Views\BackUsuarios\Delete.cshtml" />
     <Content Include="Views\BackViviendas\Delete.cshtml" />
+    <Content Include="Views\Error\PaginaNoEncontrada.cshtml" />
+    <Content Include="Views\Error\ErrorGeneral.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,14 +1,19 @@
-﻿using RepositorioRentFlat;
+﻿using Rent_Flat.Atributos;
+using RepositorioRentFlat;
 using RepositorioRentFlat.Context;
 using RepositorioRentFlat.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 
 namespace Rent_Flat.Controllers
 {
+    [AutorizacionUsuarios]
+
     public class BackCostasController : Controller
     {
         IRepository repo;
@@ -22,13 +27,17 @@ namespace Rent_Flat.Controllers
             return View(this.repo.GetNombreCostas());
         }
 
+        //--------------------------------------------------------------------
         //GET: EDIT
+     
+        [Authorize(Roles="Director")]
         public ActionResult Edit(int id)
         {
 
             return View(this.repo.BuscarCosta(id));
         }
         [HttpPost]
+      
         public ActionResult Edit(Costas c)
         {
             if (!ModelState.IsValid)
@@ -40,6 +49,8 @@ namespace Rent_Flat.Controllers
         }
         //----------------------------
         //GET: CREATE
+
+        [Authorize(Roles = "Director")]
         public ActionResult Create()
         {
             return View();
@@ -56,6 +67,8 @@ namespace Rent_Flat.Controllers
         }
         //-----------------------
         //DELETE
+        [Authorize(Roles = "Director")]
+
         public ActionResult Delete(int id)
         {
             Costas costas = this.repo.BuscarCosta(id);
@@ -68,5 +81,7 @@ namespace Rent_Flat.Controllers
             this.repo.EliminarCosta(id);
             return RedirectToAction("Nombre_Costas");
         }
+
+       
     }
 }

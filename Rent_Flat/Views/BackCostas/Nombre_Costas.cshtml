@@ -5,8 +5,8 @@
     Layout = "~/Views/Shared/PlantillaBack.cshtml";
 }
 
-<h2>Nombre_Costas</h2>
-
+<h2>Costas</h2>
+<hr />
 <p>
     @Html.ActionLink("Crear Nueva Costa", "Create",new { },new { @class= "btn btn-outline-primary" })
 </p>
@@ -39,7 +39,7 @@
                             <td>
                                 @Html.ActionLink("Modificar", "Edit", new { id=item.Cod_Provincia },new { @class= "btn btn-outline-info" }) 
                                 @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Cod_Provincia })
+                                @Html.ActionLink("Delete", "Delete", new { id = item.Cod_Provincia }, new { @class = "btn btn-outline-info" })
                             </td>
                         </tr>
                         }

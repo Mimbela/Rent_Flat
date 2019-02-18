@@ -35,8 +35,8 @@ namespace Rent_Flat.Controllers
                 //creamos la cookie con los datos cifrados
                 HttpCookie cookie = new HttpCookie("TICKETEMPLEADO", cifrado);
                 Response.Cookies.Add(cookie);
-                return RedirectToAction("Usuarios", "BackUsuarios");
-
+                return RedirectToAction("Index", "BackHome");
+               // return View();
 
             }
             else
@@ -64,7 +64,7 @@ namespace Rent_Flat.Controllers
             Response.Cookies.Add(cookie);
             //DONDE ME LO LLEVO????
             return
-                RedirectToAction("Usuarios", "BackUsuarios");
+                RedirectToAction("Index", "BackHome");
         }
     }
 }

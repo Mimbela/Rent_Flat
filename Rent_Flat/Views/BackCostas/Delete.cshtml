@@ -33,9 +33,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            @Html.ActionLink("Eliminar", "EliminarCostas", new { id=Model.Cod_Provincia },new { @class="btn btn-success"}) |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+    <div class="form-actions no-color">
+        @Html.ActionLink("Eliminar", "EliminarCostas", new { id = Model.Cod_Provincia }, new { @class = "btn btn-success" }) |
+        @Html.ActionLink("Back to List", "Nombre_Costas")
+    </div>
     }
 </div>

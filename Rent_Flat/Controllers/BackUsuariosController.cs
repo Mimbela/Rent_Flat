@@ -10,6 +10,7 @@ using System.Web.Mvc;
 namespace Rent_Flat.Controllers
 {
    [AutorizacionUsuarios]
+    [Authorize(Roles = "Director")]
     public class BackUsuariosController : Controller
     {
         IRepository repo;

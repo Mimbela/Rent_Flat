@@ -1,4 +1,5 @@
-﻿using RepositorioRentFlat.Context;
+﻿using Rent_Flat.Atributos;
+using RepositorioRentFlat.Context;
 using RepositorioRentFlat.Repositories;
 using System;
 using System.Collections.Generic;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 
 namespace Rent_Flat.Controllers
 {
+    [AutorizacionUsuarios]
     public class BackViviendasController : Controller
     {
         IRepository repo;
@@ -22,8 +24,9 @@ namespace Rent_Flat.Controllers
             
             return View(this.repo.GetViviendas());
         }
-
+        //-------------------------------------------------
         //EDIT
+        [Authorize(Roles = "Director")]
         public ActionResult Edit(int id)
         {
             return View(this.repo.BuscarViviendas(id));
@@ -42,6 +45,7 @@ namespace Rent_Flat.Controllers
         }
         //----------------------------
         //GET: CREATE
+        [Authorize(Roles = "Director")]
         public ActionResult Create()
         {
             return View();
@@ -58,6 +62,7 @@ namespace Rent_Flat.Controllers
         }
         //------------------------------------------
         //DELETE
+        [Authorize(Roles = "Director")]
         public ActionResult Delete(int id)
         {
             Viviendas viviendas = this.repo.BuscarViviendas(id);

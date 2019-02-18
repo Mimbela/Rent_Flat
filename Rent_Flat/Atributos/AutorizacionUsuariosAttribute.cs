@@ -24,8 +24,8 @@ namespace Rent_Flat.Atributos
 
                 // GenericPrincipal usuario = filterContext.HttpContext.User as GenericPrincipal;
                 Usuarios usuario = filterContext.HttpContext.User as Usuarios;
-                if (usuario.Perfil !="Director"){ }
-                if (usuario.IsInRole("Director")==false)
+                //if (usuario.Perfil !="Director" ||usuario.Perfil !="Comercial"){ }
+                if (usuario.IsInRole("Director")==false && usuario.IsInRole("Comercial")==false)
                 {
                     filterContext.Result =
                        GetRutaRedirect("Validacion", "ErrorAcceso");

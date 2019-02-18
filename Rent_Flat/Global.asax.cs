@@ -1,5 +1,6 @@
 ﻿
 using Rent_Flat.App_Start;
+using Rent_Flat.Controllers;
 using RepositorioRentFlat.Context;
 using RepositorioRentFlat.Repositories;
 using System;
@@ -57,6 +58,71 @@ namespace Rent_Flat
 
 
             }
+
+            
         }
-    }
+
+        //-------------errores
+
+        public void Application_Error()
+        {
+            //DEBEMOS CAPTURAR LA EXCEPCION
+            //QUE ESTA LLAMANDO AL METODO
+            //ACTUALMENTE
+            Exception ex = Server.GetLastError();
+            //ESTAMOS EN ENTORNO HTTP
+            //LAS EXCEPCIONES QUE DESEAMOS CAPTURAR
+            //TIENEN CODIGOS HTTP
+            //DEBEMOS CONVERTIR NUESTRO Exception GENERAL
+            //A UN TIPO DE EXCEPCION HTTP
+            HttpException httpexception = ex as HttpException;
+            //EL OBJETO HTTPEXCEPTION CONTIENE
+            //LOS CODIGOS DE ERROR HTTP
+            //ALMACENAMOS LA ACCION DONDE DESEAMOS ENVIAR
+            //DEPENDIENDO DE LOS ERRORES HTTP
+            String accion = "";
+            switch (httpexception.GetHttpCode())
+            {
+            case 404:
+            accion = "PaginaNoEncontrada";
+            break;
+            case 403: //FORBIDDEN
+            accion = "ErrorGeneral";
+            break;
+            case 401:
+                    accion = "ErrorGeneral";
+                    break;
+            default:
+            accion = "ErrorGeneral";
+            break;
+        }
+        //AL CAPTURAR LA EXCEPCIONES GLOBALES
+        //DEBEMOS LIMPIAR EL CONTEXTO DEL ERROR
+        Context.ClearError();
+        //REDIRECCIONAMOS, PERO NO LO VAMOS A HACER
+        //CON ROUTING
+        //VAMOS A ENVIAR LA PETICION REQUEST
+        //DIRECTAMENTE AL CONTROLADOR Error
+        //NECESITAMOS ROUTEDATA PARA INDICAR
+        //DONDE VAMOS A DIRIGIRNOS
+        RouteData rutaerror = new RouteData();
+        //AÑADIMOS A LA RUTA EL CONTROLADOR
+        //Y EL ACTION
+       
+      
+        rutaerror.Values.Add("controller", "Error");
+        rutaerror.Values.Add("action", accion);
+        //PARA PODER EJECUTAR LA PETICION A UN CONTROLADOR
+        //CON UNA RUTA, NECESITAMOS LA CLASE IController
+        //QUE PERMITE EJECUTAR OTRA PETICION
+        IController controlador = new ErrorController();
+                //MEDIANTE EL METODO Execute, REDIRIGIMOS
+                //EL REQUEST, ENVIANDO EL CONTEXTO (Context)
+                //Y RouteData
+                controlador.Execute(
+                new RequestContext(new HttpContextWrapper(Context), rutaerror));
+        }
+        }
+        
+    
 }
