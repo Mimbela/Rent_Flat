@@ -13,6 +13,7 @@ using System.Web.Security;
 namespace Rent_Flat.Controllers
 {
     [AutorizacionUsuarios]
+   
 
     public class BackCostasController : Controller
     {
@@ -30,7 +31,9 @@ namespace Rent_Flat.Controllers
         //--------------------------------------------------------------------
         //GET: EDIT
      
-        [Authorize(Roles="Director")]
+       // [Authorize(Roles="Director")]
+        [AutorizacionUsuarios(Roles ="Director")]
+      
         public ActionResult Edit(int id)
         {
 
@@ -50,7 +53,7 @@ namespace Rent_Flat.Controllers
         //----------------------------
         //GET: CREATE
 
-        [Authorize(Roles = "Director")]
+        [AutorizacionUsuarios(Roles ="Director")]
         public ActionResult Create()
         {
             return View();
@@ -67,7 +70,7 @@ namespace Rent_Flat.Controllers
         }
         //-----------------------
         //DELETE
-        [Authorize(Roles = "Director")]
+        [AutorizacionUsuarios(Roles ="Director")]
 
         public ActionResult Delete(int id)
         {

@@ -1,4 +1,5 @@
 ﻿using Rent_Flat.Models;
+using RepositorioRentFlat.Context;
 using RepositorioRentFlat.Repositories;
 using System;
 using System.Collections.Generic;
@@ -29,14 +30,10 @@ namespace Rent_Flat.Controllers
             return View(busquedaModel);
         }
         [HttpPost]
-        public ActionResult GetPisos(BusquedaModel busqueda)
+        public ActionResult ListaPisosPorFiltro(BusquedaModel busqueda)
         {
 
-
-
-
-
-            return View("Index", new BusquedaModel());
+            return View(this.repo.GetViviendasByFilter(busqueda.TiposViviendaSelectedValue, busqueda.CostasSelectedValue, busqueda.NumeroBaniosSelectedValue, busqueda.NumeroHabitacionesSelectedValue));
         }
     }
 }

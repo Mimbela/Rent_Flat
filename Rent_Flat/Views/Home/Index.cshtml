@@ -130,7 +130,7 @@
             <div class="col">
                 <div class="home_search_container">
                     <div class="home_search_content">
-                        @using (Html.BeginForm("GetPisos","Home", FormMethod.Post, new { @class = "search_form d-flex flex-row align-items-start justfy-content-start" }))
+                        @using (Html.BeginForm("ListaPisosPorFiltro","Home", FormMethod.Post, new { @class = "search_form d-flex flex-row align-items-start justfy-content-start" }))
                         {
                             @*<form action="#" class="search_form d-flex flex-row align-items-start justfy-content-start">*@
                                 <div class="search_form_content d-flex flex-row align-items-start justfy-content-start flex-wrap">
@@ -142,18 +142,18 @@
                         </select>
                     </div>*@
                                     <div>
-                                        @Html.DropDownListFor(x => Model.TiposVivienda, Model.TiposVivienda, new { @class = "search_form_select" })
+                                        @Html.DropDownListFor(x => Model.TiposViviendaSelectedValue, Model.TiposVivienda, new { @class = "search_form_select" })
                                         @*@Html.DropDownListFor("Tipos Vivienda",tiposVivienda, new { @class="search_form_select"})*@
                                     </div>
                                     <div>
-                                        @Html.DropDownListFor(x => Model.ListaCostas, Model.ListaCostas, new { @class = "search_form_select" })
+                                        @Html.DropDownListFor(x => Model.CostasSelectedValue, Model.ListaCostas, new { @class = "search_form_select" })
                                         @*@Html.DropDownList("Costas", listaCostas, new { @class="search_form_select"})*@
                                     </div>
                                     <div>
-                                        @Html.DropDownListFor(x => Model.NumeroHabitaciones, Model.NumeroHabitaciones, new { @class = "search_form_select" })
+                                        @Html.DropDownListFor(x => Model.NumeroHabitacionesSelectedValue, Model.NumeroHabitaciones, new { @class = "search_form_select" })
                                     </div>
                                     <div>
-                                        @Html.DropDownListFor(x => Model.NumeroBanios, Model.NumeroBanios, new { @class = "search_form_select" })
+                                        @Html.DropDownListFor(x => Model.NumeroBaniosSelectedValue, Model.NumeroBanios, new { @class = "search_form_select" })
                                     </div>
                                 </div>
                                 <input type="submit" value="GetPisos" class="search_form_button ml-auto" />

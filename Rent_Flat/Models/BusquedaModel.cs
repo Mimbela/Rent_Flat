@@ -44,8 +44,11 @@ namespace Rent_Flat.Models
         public List<SelectListItem> NumeroBanios { get; set; }
         public List<SelectListItem> NumeroHabitaciones { get; set; }
 
+        public int TiposViviendaSelectedValue { get; set; }
 
-
+        public int CostasSelectedValue { get; set; }
+        public int NumeroBaniosSelectedValue { get; set; }
+        public int NumeroHabitacionesSelectedValue { get; set; }
 
 
     }

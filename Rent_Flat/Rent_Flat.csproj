@@ -556,6 +556,7 @@
     <Content Include="Views\BackViviendas\Delete.cshtml" />
     <Content Include="Views\Error\PaginaNoEncontrada.cshtml" />
     <Content Include="Views\Error\ErrorGeneral.cshtml" />
+    <Content Include="Views\Home\ListaPisosPorFiltro.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

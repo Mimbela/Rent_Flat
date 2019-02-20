@@ -16,7 +16,8 @@ namespace Rent_Flat.Controllers
             //Response.StatusCode =(int)HttpStatusCode.Unauthorized;//not found
             //ViewBag.Mensaje = "El usuario no tiene permiso para acceder a este sitio";
             //return View();
-            Response.StatusCode = (int) HttpStatusCode.Unauthorized;
+            // Response.StatusCode = (int) HttpStatusCode.NotFound;
+            Response.StatusCode = 401;
             ViewBag.Mensaje = "Página no encontrada en el servidor.";
             return View();
     }

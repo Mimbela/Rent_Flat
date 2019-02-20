@@ -63,8 +63,27 @@ namespace Rent_Flat
         }
 
         //-------------errores
+        protected void Application_EndRequest()
+        {
+            var context = new HttpContextWrapper(Context);
+            RouteData rutaerror = new RouteData();
+            if (context.Response.StatusCode == 401)
+            {
+                rutaerror.Values.Add("controller", "Error");
+                rutaerror.Values.Add("action", "PaginaNoEncontrada");
+                //context.Response.Redirect("");
+                IController controlador = new ErrorController();
+                //MEDIANTE EL METODO Execute, REDIRIGIMOS
+                //EL REQUEST, ENVIANDO EL CONTEXTO (Context)
+                //Y RouteData
+                controlador.Execute(
+                new RequestContext(new HttpContextWrapper(Context), rutaerror));
+            }
 
-        public void Application_Error()
+        }
+
+
+            protected void Application_Error()
         {
             //DEBEMOS CAPTURAR LA EXCEPCION
             //QUE ESTA LLAMANDO AL METODO
@@ -75,27 +94,34 @@ namespace Rent_Flat
             //TIENEN CODIGOS HTTP
             //DEBEMOS CONVERTIR NUESTRO Exception GENERAL
             //A UN TIPO DE EXCEPCION HTTP
-            HttpException httpexception = ex as HttpException;
+            HttpException exhttp = ex as HttpException;
+            String action = "";
+            if (exhttp.GetHttpCode()==404)
+            {
+                action = "PaginaNoEncontrada";
+            }
+            else
+            {
+                action = "ErrorGeneral";
+            }
             //EL OBJETO HTTPEXCEPTION CONTIENE
             //LOS CODIGOS DE ERROR HTTP
             //ALMACENAMOS LA ACCION DONDE DESEAMOS ENVIAR
             //DEPENDIENDO DE LOS ERRORES HTTP
-            String accion = "";
-            switch (httpexception.GetHttpCode())
-            {
-            case 404:
-            accion = "PaginaNoEncontrada";
-            break;
-            case 403: //FORBIDDEN
-            accion = "ErrorGeneral";
-            break;
-            case 401:
-                    accion = "ErrorGeneral";
-                    break;
-            default:
-            accion = "ErrorGeneral";
-            break;
-        }
+        //    String accion = "";
+        //    switch (httpexception.GetHttpCode())
+        //    {
+        //    case 404:
+        //    accion = "PaginaNoEncontrada";
+        //    break;
+        //    case 403: //FORBIDDEN
+        //    accion = "ErrorGeneral";
+        //    break;
+          
+        //    default:
+        //    accion = "ErrorGeneral";
+        //    break;
+        //}
         //AL CAPTURAR LA EXCEPCIONES GLOBALES
         //DEBEMOS LIMPIAR EL CONTEXTO DEL ERROR
         Context.ClearError();
@@ -105,13 +131,13 @@ namespace Rent_Flat
         //DIRECTAMENTE AL CONTROLADOR Error
         //NECESITAMOS ROUTEDATA PARA INDICAR
         //DONDE VAMOS A DIRIGIRNOS
-        RouteData rutaerror = new RouteData();
+        RouteData ruta = new RouteData();
         //AÑADIMOS A LA RUTA EL CONTROLADOR
         //Y EL ACTION
        
       
-        rutaerror.Values.Add("controller", "Error");
-        rutaerror.Values.Add("action", accion);
+        ruta.Values.Add("controller", "Error");
+        ruta.Values.Add("action", action);
         //PARA PODER EJECUTAR LA PETICION A UN CONTROLADOR
         //CON UNA RUTA, NECESITAMOS LA CLASE IController
         //QUE PERMITE EJECUTAR OTRA PETICION
@@ -120,7 +146,7 @@ namespace Rent_Flat
                 //EL REQUEST, ENVIANDO EL CONTEXTO (Context)
                 //Y RouteData
                 controlador.Execute(
-                new RequestContext(new HttpContextWrapper(Context), rutaerror));
+                new RequestContext(new HttpContextWrapper(Context), ruta));
         }
         }
         

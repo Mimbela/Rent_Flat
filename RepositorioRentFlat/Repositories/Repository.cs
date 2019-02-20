@@ -140,9 +140,9 @@ namespace RepositorioRentFlat.Repositories
         public List<Viviendas> GetViviendasByFilter(int TipoVivienda, int Costa, int Banios, int Habitaciones)
         {
 
-            List<Viviendas> listaViviendas = this.entidad.Viviendas.Where(x => x.Cod_Provincia == Costa).ToList();
+            List<Viviendas> listaViviendas = this.entidad.Viviendas.Where(x => x.Cod_Provincia == Costa || x.Cod_TipoVivienda == TipoVivienda || x.Num_banios == Banios || x.Num_habitaciones == Habitaciones).ToList();
 
-            return new List<Viviendas>();
+            return listaViviendas;
         }
 
         public void InsertarCosta(Costas modelo)
