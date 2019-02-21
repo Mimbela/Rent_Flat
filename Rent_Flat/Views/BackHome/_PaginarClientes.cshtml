@@ -1,22 +1,13 @@
-﻿@using System.Web.Optimization
-@model IEnumerable<RepositorioRentFlat.Context.VISTATODOSCLIENTES>
+﻿@model IEnumerable<RepositorioRentFlat.Context.VISTATODOSCLIENTES>
 
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/PlantillaBack.cshtml";
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@{ 
     int registros = ViewBag.Registros;
     int numeropagina = 1;
 }
-
-<h2>Index</h2>
-@*@Html.ActionLink("COSTAS", "Nombre_Costas", "BackCostas")
-    @Html.ActionLink("TIPO DE VIVIENDAS", "GetTiposVivienda", "BackTipoVivienda")
-    @Html.ActionLink("USUARIOS", "Usuarios", "BackUsuarios")
-    @Html.ActionLink("INFORMCIÓN DE VIVIENDAS", "Viviendas", "BackViviendas")*@
-
-
-@*@{Html.RenderAction("_PaginarClientes");}*@
-
 <table class="table">
     <tr>
         <th>
@@ -78,11 +69,11 @@
     }
     <tr>
         <td colspan="3">
-            @for (int i = 1; i < registros; i += 5)
+            @for (int i = 1; i < registros; i += 3)
             {
                 <span>
                     @Html.ActionLink(numeropagina + " | "
-     , "Index", "BackHome"
+     , "_PaginarClientes", "BackHome"
      , new {
          indice = i
      }, null)

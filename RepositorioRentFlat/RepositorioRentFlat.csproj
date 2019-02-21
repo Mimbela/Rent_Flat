@@ -83,6 +83,9 @@
     <Compile Include="Context\Usuarios.cs">
       <DependentUpon>EntidadRenting.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\VISTATODOSCLIENTES.cs">
+      <DependentUpon>EntidadRenting.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Viviendas.cs">
       <DependentUpon>EntidadRenting.tt</DependentUpon>
     </Compile>

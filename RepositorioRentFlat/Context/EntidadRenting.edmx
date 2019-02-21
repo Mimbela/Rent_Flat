@@ -85,6 +85,23 @@
           <Property Name="Garaje" Type="bit" Nullable="false" />
           <Property Name="Cod_TipoVivienda" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Rent_Flat_BBDD.dbo.VISTATODOSCLIENTES' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VISTATODOSCLIENTES">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+            <PropertyRef Name="NombreCliente" />
+            <PropertyRef Name="ApellidoCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="int" Nullable="false" />
+          <Property Name="NombreCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ApellidoCliente" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EmailCliente" Type="nvarchar" MaxLength="150" />
+          <Property Name="Direccion" Type="nvarchar" MaxLength="50" />
+          <Property Name="Ciudad" Type="nvarchar" MaxLength="50" />
+          <Property Name="Dni" Type="nvarchar" MaxLength="50" />
+          <Property Name="Telefono" Type="int" />
+        </EntityType>
         <EntityContainer Name="RentingModelStoreContainer">
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Costas" EntityType="Self.Costas" Schema="dbo" store:Type="Tables" />
@@ -93,6 +110,18 @@
           <EntitySet Name="Tipos_Vivienda" EntityType="Self.Tipos_Vivienda" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Viviendas" EntityType="Self.Viviendas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VISTATODOSCLIENTES" EntityType="Self.VISTATODOSCLIENTES" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VISTATODOSCLIENTES].[IdCliente] AS [IdCliente], 
+    [VISTATODOSCLIENTES].[NombreCliente] AS [NombreCliente], 
+    [VISTATODOSCLIENTES].[ApellidoCliente] AS [ApellidoCliente], 
+    [VISTATODOSCLIENTES].[EmailCliente] AS [EmailCliente], 
+    [VISTATODOSCLIENTES].[Direccion] AS [Direccion], 
+    [VISTATODOSCLIENTES].[Ciudad] AS [Ciudad], 
+    [VISTATODOSCLIENTES].[Dni] AS [Dni], 
+    [VISTATODOSCLIENTES].[Telefono] AS [Telefono]
+    FROM [dbo].[VISTATODOSCLIENTES] AS [VISTATODOSCLIENTES]</DefiningQuery>
+          </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -141,6 +170,7 @@
           <EntitySet Name="Clientes" EntityType="RentingModel.Clientes" />
           <EntitySet Name="Viviendas" EntityType="RentingModel.Viviendas" />
           <EntitySet Name="Usuarios" EntityType="RentingModel.Usuarios" />
+          <EntitySet Name="VISTATODOSCLIENTES" EntityType="RentingModel.VISTATODOSCLIENTES" />
         </EntityContainer>
         <EntityType Name="Clientes">
           <Key>
@@ -186,6 +216,21 @@
           <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Mostrar_info_contacto" Type="Boolean" Nullable="false" />
           <Property Name="Perfil" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VISTATODOSCLIENTES">
+          <Key>
+            <PropertyRef Name="IdCliente" />
+            <PropertyRef Name="NombreCliente" />
+            <PropertyRef Name="ApellidoCliente" />
+          </Key>
+          <Property Name="IdCliente" Type="Int32" Nullable="false" />
+          <Property Name="NombreCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ApellidoCliente" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="EmailCliente" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Ciudad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Dni" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Telefono" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -277,6 +322,20 @@
                 <ScalarProperty Name="Password" ColumnName="Password" />
                 <ScalarProperty Name="Login" ColumnName="Login" />
                 <ScalarProperty Name="Cod_usuario" ColumnName="Cod_usuario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VISTATODOSCLIENTES">
+            <EntityTypeMapping TypeName="RentingModel.VISTATODOSCLIENTES">
+              <MappingFragment StoreEntitySet="VISTATODOSCLIENTES">
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Dni" ColumnName="Dni" />
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="EmailCliente" ColumnName="EmailCliente" />
+                <ScalarProperty Name="ApellidoCliente" ColumnName="ApellidoCliente" />
+                <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

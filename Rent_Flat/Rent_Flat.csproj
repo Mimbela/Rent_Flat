@@ -557,6 +557,8 @@
     <Content Include="Views\Error\PaginaNoEncontrada.cshtml" />
     <Content Include="Views\Error\ErrorGeneral.cshtml" />
     <Content Include="Views\Home\ListaPisosPorFiltro.cshtml" />
+    <Content Include="Views\BackHome\_PaginarClientes.cshtml" />
+    <Content Include="Views\Shared\PlantillaLogin.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

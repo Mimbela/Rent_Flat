@@ -13,7 +13,7 @@ namespace RepositorioRentFlat.Context
     using System.Collections.Generic;
     using System.Security.Principal;
 
-    public partial class Usuarios:IPrincipal
+    public partial class Usuarios: IPrincipal
     {
         public int Cod_usuario { get; set; }
         public string Login { get; set; }
@@ -25,7 +25,6 @@ namespace RepositorioRentFlat.Context
         public string Telefono { get; set; }
         public bool Mostrar_info_contacto { get; set; }
         public string Perfil { get; set; }
-
         public Usuarios(IIdentity identidad)
         {
             this.Identity = identidad;
@@ -53,3 +52,4 @@ namespace RepositorioRentFlat.Context
         public IIdentity Identity { get; set; }
     }
 }
+

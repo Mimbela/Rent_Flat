@@ -140,7 +140,12 @@ namespace RepositorioRentFlat.Repositories
         public List<Viviendas> GetViviendasByFilter(int TipoVivienda, int Costa, int Banios, int Habitaciones)
         {
 
-            List<Viviendas> listaViviendas = this.entidad.Viviendas.Where(x => x.Cod_Provincia == Costa || x.Cod_TipoVivienda == TipoVivienda || x.Num_banios == Banios || x.Num_habitaciones == Habitaciones).ToList();
+            List<Viviendas> listaViviendas = this.entidad.Viviendas.Where(x => 
+                (TipoVivienda == 0 || x.Cod_TipoVivienda == TipoVivienda) 
+                && (Costa == 0 || x.Cod_Provincia == Costa) 
+                && (Banios == 0 || x.Num_banios >= Banios) 
+                && (Habitaciones == 0 || x.Num_habitaciones >= Habitaciones)).ToList();
+
 
             return listaViviendas;
         }
@@ -262,6 +267,17 @@ namespace RepositorioRentFlat.Repositories
             tipo.Ubicacion = modelo.Ubicacion;
 
             this.entidad.SaveChanges();
+        }
+
+        public List<VISTATODOSCLIENTES> PaginarClientes(int indice, ref int totalregistros)
+        {
+            totalregistros = entidad.VISTATODOSCLIENTES.Count();
+            var consulta = (from datos in entidad.VISTATODOSCLIENTES
+                           orderby datos.ApellidoCliente ascending
+                           select datos).Skip(indice).Take(5).ToList();
+            //totalregistros = consulta.Count();
+
+            return consulta;
         }
     }
 }

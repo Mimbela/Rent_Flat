@@ -41,6 +41,10 @@ namespace RepositorioRentFlat.Repositories
         Usuarios ExisteEmpleado(String login, String password);
         List<Usuarios> GetEmpleadosSubordinaros(int director);
         Usuarios BuscarEmpleado(String login);
+
+
+        //----------------------------INDEX
+        List<VISTATODOSCLIENTES> PaginarClientes(int indice, ref int totalregistros);
         
 
 
