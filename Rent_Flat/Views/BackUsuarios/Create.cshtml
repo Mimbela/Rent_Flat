@@ -3,6 +3,8 @@
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/PlantillaBack.cshtml";
+    List<SelectListItem> ListaDePerfiles = ViewBag.ListaPerfiles;
+
 }
 
 <h2>Create</h2>
@@ -56,13 +58,13 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.DIR, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.DIR, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.DIR, "", new { @class = "text-danger" })
             </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -90,11 +92,23 @@
             </div>
         </div>
 
-        <div class="form-group">
+        @*<div class="form-group">
             @Html.LabelFor(model => model.Perfil, htmlAttributes: new { @class = "control-label col-md-2" })*
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Perfil, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Perfil, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Perfil, htmlAttributes: new { @class= "control-label col-md-2"})
+            <div class="col-md-10">
+                <select name="DIR" class="form-control">
+                    @foreach(var itemval in ListaDePerfiles)
+                    {
+                        <option value="@itemval.Value">@itemval.Text</option>
+                    }
+                </select>
             </div>
         </div>
 

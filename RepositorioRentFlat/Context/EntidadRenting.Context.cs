@@ -12,6 +12,8 @@ namespace RepositorioRentFlat.Context
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class EntidadRenting : DbContext
     {
@@ -33,5 +35,34 @@ namespace RepositorioRentFlat.Context
         public virtual DbSet<Viviendas> Viviendas { get; set; }
         public virtual DbSet<Usuarios> Usuarios { get; set; }
         public virtual DbSet<VISTATODOSCLIENTES> VISTATODOSCLIENTES { get; set; }
+    
+        public virtual ObjectResult<VIVIENDASPORFILTRO_Result> VIVIENDASPORFILTRO(Nullable<int> cod_TiposVivienda, Nullable<int> cod_Provincia, Nullable<int> num_banios, Nullable<int> num_habitaciones, Nullable<int> cod_casa, Nullable<int> cod_cliente)
+        {
+            var cod_TiposViviendaParameter = cod_TiposVivienda.HasValue ?
+                new ObjectParameter("Cod_TiposVivienda", cod_TiposVivienda) :
+                new ObjectParameter("Cod_TiposVivienda", typeof(int));
+    
+            var cod_ProvinciaParameter = cod_Provincia.HasValue ?
+                new ObjectParameter("Cod_Provincia", cod_Provincia) :
+                new ObjectParameter("Cod_Provincia", typeof(int));
+    
+            var num_baniosParameter = num_banios.HasValue ?
+                new ObjectParameter("Num_banios", num_banios) :
+                new ObjectParameter("Num_banios", typeof(int));
+    
+            var num_habitacionesParameter = num_habitaciones.HasValue ?
+                new ObjectParameter("Num_habitaciones", num_habitaciones) :
+                new ObjectParameter("Num_habitaciones", typeof(int));
+    
+            var cod_casaParameter = cod_casa.HasValue ?
+                new ObjectParameter("Cod_casa", cod_casa) :
+                new ObjectParameter("Cod_casa", typeof(int));
+    
+            var cod_clienteParameter = cod_cliente.HasValue ?
+                new ObjectParameter("Cod_cliente", cod_cliente) :
+                new ObjectParameter("Cod_cliente", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<VIVIENDASPORFILTRO_Result>("VIVIENDASPORFILTRO", cod_TiposViviendaParameter, cod_ProvinciaParameter, num_baniosParameter, num_habitacionesParameter, cod_casaParameter, cod_clienteParameter);
+        }
     }
 }

@@ -46,13 +46,43 @@ namespace Rent_Flat.Controllers
         //GET: CREATE
         public ActionResult Create()
         {
+            var algo = this.repo.ComboRolUsuario();
+            List<SelectListItem> listaDePerfiles = new List<SelectListItem>();
+            foreach(var item in algo)
+            {
+                SelectListItem Perfil = new SelectListItem()
+                {
+                    Value = item.Key.ToString(),
+                    Text = item.Value
+                };
+                listaDePerfiles.Add(Perfil);
+
+            }
+
+            ViewBag.ListaPerfiles = listaDePerfiles;
+
             return View(new Usuarios());
         }
         [HttpPost]
         public ActionResult Create(Usuarios u)
         {
+            var algo = this.repo.ComboRolUsuario();
+
+            u.Perfil = algo.ContainsKey(u.DIR) ? algo[u.DIR] : null;
+
+
             if (!ModelState.IsValid)
             {
+                List<SelectListItem> listaDePerfiles = new List<SelectListItem>();
+                foreach (var item in algo)
+                {
+                    SelectListItem Perfil = new SelectListItem()
+                    {
+                        Value = item.Key.ToString(),
+                        Text = item.Value
+                    };
+                    listaDePerfiles.Add(Perfil);
+                }
                 return View(u);
             }
             this.repo.InsertarUsuarios(u);

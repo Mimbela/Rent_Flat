@@ -36,7 +36,9 @@ namespace Rent_Flat.Controllers
             }
 
             int numeroregistros = 0;
-            List<VISTATODOSCLIENTES> clientes = this.repo.PaginarClientes(indice.GetValueOrDefault(),ref numeroregistros);
+           
+
+            List<VISTATODOSCLIENTES> clientes = this.repo.PaginarClientes(indice.GetValueOrDefault(), ref numeroregistros);
             ViewBag.Registros = numeroregistros;
             
             return View(clientes);

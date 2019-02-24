@@ -96,7 +96,7 @@ namespace Rent_Flat
             //A UN TIPO DE EXCEPCION HTTP
             HttpException exhttp = ex as HttpException;
             String action = "";
-            if (exhttp.GetHttpCode()==404)
+            if (exhttp.GetHttpCode() == 404)
             {
                 action = "PaginaNoEncontrada";
             }
@@ -108,47 +108,53 @@ namespace Rent_Flat
             //LOS CODIGOS DE ERROR HTTP
             //ALMACENAMOS LA ACCION DONDE DESEAMOS ENVIAR
             //DEPENDIENDO DE LOS ERRORES HTTP
-        //    String accion = "";
-        //    switch (httpexception.GetHttpCode())
-        //    {
-        //    case 404:
-        //    accion = "PaginaNoEncontrada";
-        //    break;
-        //    case 403: //FORBIDDEN
-        //    accion = "ErrorGeneral";
-        //    break;
-          
-        //    default:
-        //    accion = "ErrorGeneral";
-        //    break;
-        //}
-        //AL CAPTURAR LA EXCEPCIONES GLOBALES
-        //DEBEMOS LIMPIAR EL CONTEXTO DEL ERROR
-        Context.ClearError();
-        //REDIRECCIONAMOS, PERO NO LO VAMOS A HACER
-        //CON ROUTING
-        //VAMOS A ENVIAR LA PETICION REQUEST
-        //DIRECTAMENTE AL CONTROLADOR Error
-        //NECESITAMOS ROUTEDATA PARA INDICAR
-        //DONDE VAMOS A DIRIGIRNOS
-        RouteData ruta = new RouteData();
-        //AÑADIMOS A LA RUTA EL CONTROLADOR
-        //Y EL ACTION
-       
-      
-        ruta.Values.Add("controller", "Error");
-        ruta.Values.Add("action", action);
-        //PARA PODER EJECUTAR LA PETICION A UN CONTROLADOR
-        //CON UNA RUTA, NECESITAMOS LA CLASE IController
-        //QUE PERMITE EJECUTAR OTRA PETICION
-        IController controlador = new ErrorController();
-                //MEDIANTE EL METODO Execute, REDIRIGIMOS
-                //EL REQUEST, ENVIANDO EL CONTEXTO (Context)
-                //Y RouteData
-                controlador.Execute(
-                new RequestContext(new HttpContextWrapper(Context), ruta));
+            //    String accion = "";
+            //    switch (httpexception.GetHttpCode())
+            //    {
+            //    case 404:
+            //    accion = "PaginaNoEncontrada";
+            //    break;
+            //    case 403: //FORBIDDEN
+            //    accion = "ErrorGeneral";
+            //    break;
+
+            //    default:
+            //    accion = "ErrorGeneral";
+            //    break;
+            //}
+            //AL CAPTURAR LA EXCEPCIONES GLOBALES
+            //DEBEMOS LIMPIAR EL CONTEXTO DEL ERROR
+            Context.ClearError();
+            //REDIRECCIONAMOS, PERO NO LO VAMOS A HACER
+            //CON ROUTING
+            //VAMOS A ENVIAR LA PETICION REQUEST
+            //DIRECTAMENTE AL CONTROLADOR Error
+            //NECESITAMOS ROUTEDATA PARA INDICAR
+            //DONDE VAMOS A DIRIGIRNOS
+            RouteData ruta = new RouteData();
+            //AÑADIMOS A LA RUTA EL CONTROLADOR
+            //Y EL ACTION
+
+
+            ruta.Values.Add("controller", "Error");
+            ruta.Values.Add("action", action);
+            //PARA PODER EJECUTAR LA PETICION A UN CONTROLADOR
+            //CON UNA RUTA, NECESITAMOS LA CLASE IController
+            //QUE PERMITE EJECUTAR OTRA PETICION
+
+
+
+
+
+
+            IController controlador = new ErrorController();
+            //MEDIANTE EL METODO Execute, REDIRIGIMOS
+            //EL REQUEST, ENVIANDO EL CONTEXTO (Context)
+            //Y RouteData
+            controlador.Execute(
+            new RequestContext(new HttpContextWrapper(Context), ruta));
         }
-        }
+    }
         
     
 }

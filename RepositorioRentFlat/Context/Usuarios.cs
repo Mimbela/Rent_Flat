@@ -13,7 +13,7 @@ namespace RepositorioRentFlat.Context
     using System.Collections.Generic;
     using System.Security.Principal;
 
-    public partial class Usuarios: IPrincipal
+    public partial class Usuarios : IPrincipal
     {
         public int Cod_usuario { get; set; }
         public string Login { get; set; }
@@ -52,4 +52,3 @@ namespace RepositorioRentFlat.Context
         public IIdentity Identity { get; set; }
     }
 }
-

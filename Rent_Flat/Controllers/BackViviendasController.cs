@@ -29,6 +29,9 @@ namespace Rent_Flat.Controllers
         [Authorize(Roles = "Director")]
         public ActionResult Edit(int id)
         {
+            var listaTiposVivienda = new List<SelectListItem>();
+            listaTiposVivienda.AddRange(this.repo.GetTiposViviendas().Select(x => new SelectListItem() { Value = x.Cod_tipo_vivienda.ToString(), Text = x.Descripcion }));
+            ViewBag.listaTiposVivienda = listaTiposVivienda;
             return View(this.repo.BuscarViviendas(id));
 
         }
@@ -48,6 +51,18 @@ namespace Rent_Flat.Controllers
         [Authorize(Roles = "Director")]
         public ActionResult Create()
         {
+            var listaTiposVivienda = new List<SelectListItem>();
+            foreach (var item in this.repo.GetTiposViviendas())
+            {
+                SelectListItem tipoVivienda = new SelectListItem();
+                tipoVivienda.Value = item.Cod_tipo_vivienda.ToString();
+                tipoVivienda.Text = item.Descripcion;
+                listaTiposVivienda.Add(tipoVivienda);
+            }
+
+
+          //  listaTiposVivienda.AddRange(this.repo.GetTiposViviendas().Select(x => new SelectListItem() { Value = x.Cod_tipo_vivienda.ToString(), Text = x.Descripcion }));
+            ViewBag.ListaTiposViviendaCreate = listaTiposVivienda;
             return View();
         }
         [HttpPost]
@@ -55,6 +70,8 @@ namespace Rent_Flat.Controllers
         {
             if (!ModelState.IsValid)
             {
+
+                ViewBag.ListaTiposViviendaCreate.AddRange(this.repo.GetTiposViviendas().Select(x => new SelectListItem() { Value = x.Cod_tipo_vivienda.ToString(), Text = x.Descripcion }));
                 return View(u);
             }
             this.repo.InsertarViviendas(u);

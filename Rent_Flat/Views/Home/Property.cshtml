@@ -1,0 +1,261 @@
+﻿@model RepositorioRentFlat.Context.VIVIENDASPORFILTRO_Result
+@using System.Web.Optimization
+
+@{
+    ViewBag.Title = "Property";
+    Layout = "~/Views/Shared/PlantillaFront.cshtml";
+}
+
+@Styles.Render("~/propiedadesstyles")
+<link href="~/Content/Front/styles/property.css" rel="stylesheet" />
+<link href="~/Content/Front/styles/property_responsive.css" rel="stylesheet" />
+
+<div class="property" style="margin-top:200px;">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                @*<div class="section_title">@Model.Count() Casas Encontradas</div>*@
+                @*<div class="section_subtitle">Search your dream home</div>*@
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+
+                <!-- Sidebar -->
+
+                <div class="col-lg-4">
+                    <div class="sidebar">
+                        @*<div class="sidebar_search">
+                            <div class="sidebar_search_title">Search your home</div>
+                            <div class="sidebar_search_form_container">
+                                <form action="#" class="sidebar_search_form" id="sidebar_search_form">
+                                    <select class="sidebar_search_select">
+                                        <option disabled selected>Keywords</option>
+                                        <option>Option</option>
+                                        <option>Option</option>
+                                        <option>Option</option>
+                                        <option>Option</option>
+                                    </select>
+                                    <select class="sidebar_search_select">
+                                        <option disabled selected>Property ID</option>
+                                        <option>Option</option>
+                                        <option>Option</option>
+                                        <option>Option</option>
+                                        <option>Option</option>
+                                    </select>
+                                    <select class="sidebar_search_select">
+                                        <option disabled selected>Property Status</option>
+                                        <option>Option</option>
+                                        <option>Option</option>
+                                        <option>Option</option>
+                                        <option>Option</option>
+                                    </select>
+                                    <select class="sidebar_search_select">
+                                        <option disabled selected>City</option>
+                                        <option>Option</option>
+                                        <option>Option</option>
+                                        <option>Option</option>
+                                        <option>Option</option>
+                                    </select>
+                                    <select class="sidebar_search_select">
+                                        <option disabled selected>Property Type</option>
+                                        <option>Option</option>
+                                        <option>Option</option>
+                                        <option>Option</option>
+                                        <option>Option</option>
+                                    </select>
+                                    <div class="row sidebar_search_row">
+                                        <div class="col-lg-6">
+                                            <input type="text" class="sidebar_search_input" placeholder="Bedrooms No">
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <input type="text" class="sidebar_search_input" placeholder="Bathrooms No">
+                                        </div>
+                                    </div>
+
+                                    <!-- Filter Price -->
+                                    <div class="price_filter">
+                                        <div class="price_filter_values d-flex flex-row align-items-center justfy-content-start">
+                                            <div>Min Price</div>
+                                            <div class="ml-auto">Max Price</div>
+                                        </div>
+                                        <input type="range" min="0" max="1000" step="10" value="250" data-rangeslider="" style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0;">
+                                    </div>
+
+                                    <!-- Filter Area -->
+                                    <div class="area_filter">
+                                        <div class="price_filter_values d-flex flex-row align-items-center justfy-content-start">
+                                            <div>Min Price</div>
+                                            <div class="ml-auto">Max Price</div>
+                                        </div>
+                                        <input type="range" min="0" max="1000" step="10" value="300" data-rangeslider="" style="position: absolute; width: 1px; height: 1px; overflow: hidden; opacity: 0;">
+                                    </div>
+                                    <button class="sidebar_search_button search_form_button">search</button>
+                                </form>
+                            </div>
+                        </div>*@
+
+                        <!-- Realtor -->
+                        <div class="sidebar_realtor">
+                            <div class="sidebar_realtor_image"><img src="images/sidebar_realtor.jpg" alt=""></div>
+                            <div class="sidebar_realtor_body text-center">
+                                <div class="sidebar_realtor_title"><a href="#">@Model.NombreCliente @Model.ApellidoCliente</a></div>
+                                @*<div class="sidebar_realtor_subtitle">Senior Realtor</div>*@
+                                <div class="sidebar_realtor_phone"><span>Teléfono: </span>@Model.Telefono</div>
+                                <div >@Model.EmailCliente</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Property Content -->
+                <div class="col-lg-7 offset-lg-1">
+                    <div class="property_content">
+                        <div class="property_icons">
+                            <div class="property_title">@Model.Direccion | @Model.NombreProvincia</div>
+                            <div class="property_text property_text_1">
+                                <p>@Model.Direccion</p>
+                            </div>
+                            <div class="property_rooms d-flex flex-sm-row flex-column align-items-start justify-content-start">
+
+                                <!-- Property Room Item -->
+                                <div class="property_room">
+                                    <div class="property_room_title">Habitciones</div>
+                                    <div class="property_room_content d-flex flex-row align-items-center justify-content-start">
+                                        <div class="room_icon"><img src="images/room_1.png" alt=""></div>
+                                        <div class="room_num">@Model.Num_habitaciones</div>
+                                    </div>
+                                </div>
+
+                                <!-- Property Room Item -->
+                                <div class="property_room">
+                                    <div class="property_room_title">Baños</div>
+                                    <div class="property_room_content d-flex flex-row align-items-center justify-content-start">
+                                        <div class="room_icon"><img src="images/room_2.png" alt=""></div>
+                                        <div class="room_num">@Model.Num_banios</div>
+                                    </div>
+                                </div>
+
+                                <!-- Property Room Item -->
+                                <div class="property_room">
+                                    <div class="property_room_title">Area</div>
+                                    <div class="property_room_content d-flex flex-row align-items-center justify-content-start">
+                                        <div class="room_icon"><img src="images/room_3.png" alt=""></div>
+                                        <div class="room_num">@Model.Tamanio_vivienda m<sup>2</sup></div>
+                                    </div>
+                                </div>
+
+                                <!-- Property Room Item -->
+                                <div class="property_room">
+                                    <div class="property_room_title">Garaje</div>
+                                    <div class="property_room_content d-flex flex-row align-items-center justify-content-start">
+                                        <div class="room_icon"><img src="images/room_5.png" alt=""></div>
+                                        <div class="room_num">
+                                            @if (Model.Garaje.ToString().ToUpper() == "TRUE")
+                                            {<span>1</span> }
+                                            else
+                                            { <span>0</span>}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Property Room Item -->
+                            @*<div class="property_room">
+                <div class="property_room_title">Garage</div>
+                <div class="property_room_content d-flex flex-row align-items-center justify-content-start">
+                    <div class="room_icon"><img src="images/room_5.png" alt=""></div>
+                    <div class="room_num">2</div>
+                </div>
+            </div>*@
+
+                        </div>
+                    </div>
+
+                    <!-- Description -->
+
+                    <div class="property_description">
+                        <div class="property_title">Descripción</div>
+                        <div class="property_text property_text_2">
+                            <p>@Model.Descripcion_vivienda</p>
+                        </div>
+                    </div>
+                    @if (Model.PrecioActivo.HasValue || Model.PrecioActivo > 0)
+                    {
+                        <div class="property_price">
+                            <div class="property_title">Precio Actual</div>
+                            <div class="property_text property_text_2">
+                                <p>@Model.PrecioActivo €/Mes</p>
+                            </div>
+                        </div>
+                    }
+
+                    @if (Model.PrecioAnterior.HasValue || Model.PrecioAnterior > 0)
+                    {
+                        <div class="property_price">
+                            <div class="property_title">Precio Anterior</div>
+                            <div class="property_text property_text_2">
+                                <p style="text-decoration:line-through;color:red;">@Model.PrecioAnterior €/Mes</p>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- Additional Details -->
+                    @*<div class="additional_details">
+        <div class="property_title"></div>
+        <div class="details_container">
+            <ul>
+                <li><span>bedroom features: </span>Main Floor Master Bedroom, Walk-In Closet</li>
+                <li><span>dining area: </span>Breakfast Counter/Bar, Living/Dining Combo</li>
+                <li><span>doors & windows: </span>Bay Window</li>
+                <li><span>entry location: </span>Mid Level</li>
+                <li><span>floors: </span>Raised Foundation, Vinyl Tile, Wall-to-Wall Carpet, Wood</li>
+            </ul>
+        </div>
+    </div>*@
+
+                    <!-- Property On Map -->
+                    @*<div class="property_map">
+        <div class="property_title">Property on map</div>
+        <div class="property_map_container">
+
+            <!-- Google Map -->
+            <div id="google_map" class="google_map">
+                <div class="map_container">
+                    <div id="map"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    @*<h2>Property</h2>
+
+
+
+        <div>
+            @Model.Direccion | @Model.NombreProvincia
+        </div>
+
+
+        <div>
+            @Model.Descripcion_vivienda
+        </div>
+
+        <div>
+            @Model.NombreCliente @Model.ApellidoCliente
+        </div>
+        <div>
+            @Model.EmailCliente
+        </div>*@
+
+    @Scripts.Render("~/propiedadescripts")
+    <script src="~/Content/Front/js/property.js"></script>

@@ -102,6 +102,14 @@ warning 6002: The table/view 'Rent_Flat_BBDD.dbo.VISTATODOSCLIENTES' does not ha
           <Property Name="Dni" Type="nvarchar" MaxLength="50" />
           <Property Name="Telefono" Type="int" />
         </EntityType>
+        <Function Name="VIVIENDASPORFILTRO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Cod_TiposVivienda" Type="int" Mode="In" />
+          <Parameter Name="Cod_Provincia" Type="int" Mode="In" />
+          <Parameter Name="Num_banios" Type="int" Mode="In" />
+          <Parameter Name="Num_habitaciones" Type="int" Mode="In" />
+          <Parameter Name="Cod_casa" Type="int" Mode="In" />
+          <Parameter Name="Cod_cliente" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="RentingModelStoreContainer">
           <EntitySet Name="Clientes" EntityType="Self.Clientes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Costas" EntityType="Self.Costas" Schema="dbo" store:Type="Tables" />
@@ -171,6 +179,14 @@ warning 6002: The table/view 'Rent_Flat_BBDD.dbo.VISTATODOSCLIENTES' does not ha
           <EntitySet Name="Viviendas" EntityType="RentingModel.Viviendas" />
           <EntitySet Name="Usuarios" EntityType="RentingModel.Usuarios" />
           <EntitySet Name="VISTATODOSCLIENTES" EntityType="RentingModel.VISTATODOSCLIENTES" />
+          <FunctionImport Name="VIVIENDASPORFILTRO" ReturnType="Collection(RentingModel.VIVIENDASPORFILTRO_Result)">
+            <Parameter Name="Cod_TiposVivienda" Mode="In" Type="Int32" />
+            <Parameter Name="Cod_Provincia" Mode="In" Type="Int32" />
+            <Parameter Name="Num_banios" Mode="In" Type="Int32" />
+            <Parameter Name="Num_habitaciones" Mode="In" Type="Int32" />
+            <Parameter Name="Cod_casa" Mode="In" Type="Int32" />
+            <Parameter Name="Cod_cliente" Mode="In" Type="Int32" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="Clientes">
           <Key>
@@ -232,6 +248,33 @@ warning 6002: The table/view 'Rent_Flat_BBDD.dbo.VISTATODOSCLIENTES' does not ha
           <Property Name="Dni" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Telefono" Type="Int32" />
         </EntityType>
+        <ComplexType Name="VIVIENDASPORFILTRO_Result">
+          <Property Type="String" Name="Ciudad" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Cod_casa" Nullable="false" />
+          <Property Type="Int32" Name="Cod_Provincia" Nullable="false" />
+          <Property Type="Int32" Name="Cod_TipoVivienda" Nullable="true" />
+          <Property Type="String" Name="Codigo_Posta" Nullable="false" MaxLength="5" />
+          <Property Type="String" Name="Descripcion_vivienda" Nullable="false" MaxLength="1000" />
+          <Property Type="Boolean" Name="Garaje" Nullable="false" />
+          <Property Type="Int32" Name="IdCliente" Nullable="true" />
+          <Property Type="Int32" Name="Num_banios" Nullable="false" />
+          <Property Type="Int32" Name="Num_habitaciones" Nullable="false" />
+          <Property Type="Int32" Name="Tamanio_vivienda" Nullable="false" />
+          <Property Type="String" Name="Ubicacion" Nullable="false" MaxLength="150" />
+          <Property Type="Int32" Name="Cod_tipo_vivienda" Nullable="false" />
+          <Property Type="String" Name="Descripcion_tipo" Nullable="true" />
+          <Property Type="Binary" Name="Foto" Nullable="true" MaxLength="Max" />
+          <Property Type="String" Name="NombreProvincia" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="ApellidoCliente" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="CIUDAD_CLIENTE" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Direccion" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Dni" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="EmailCliente" Nullable="true" MaxLength="150" />
+          <Property Type="String" Name="NombreCliente" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="Telefono" Nullable="true" />
+          <Property Type="Decimal" Name="PrecioActivo" Nullable="false" Precision="18" Scale="2" />
+          <Property Type="Decimal" Name="PrecioAnterior" Nullable="true" Precision="18" Scale="2" />
+        </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -339,6 +382,37 @@ warning 6002: The table/view 'Rent_Flat_BBDD.dbo.VISTATODOSCLIENTES' does not ha
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="VIVIENDASPORFILTRO" FunctionName="RentingModel.Store.VIVIENDASPORFILTRO">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="RentingModel.VIVIENDASPORFILTRO_Result">
+                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
+                <ScalarProperty Name="Cod_casa" ColumnName="Cod_casa" />
+                <ScalarProperty Name="Cod_Provincia" ColumnName="Cod_Provincia" />
+                <ScalarProperty Name="Cod_TipoVivienda" ColumnName="Cod_TipoVivienda" />
+                <ScalarProperty Name="Codigo_Posta" ColumnName="Codigo_Posta" />
+                <ScalarProperty Name="Descripcion_vivienda" ColumnName="Descripcion_vivienda" />
+                <ScalarProperty Name="Garaje" ColumnName="Garaje" />
+                <ScalarProperty Name="IdCliente" ColumnName="IdCliente" />
+                <ScalarProperty Name="Num_banios" ColumnName="Num_banios" />
+                <ScalarProperty Name="Num_habitaciones" ColumnName="Num_habitaciones" />
+                <ScalarProperty Name="Tamanio_vivienda" ColumnName="Tamanio_vivienda" />
+                <ScalarProperty Name="Ubicacion" ColumnName="Ubicacion" />
+                <ScalarProperty Name="Cod_tipo_vivienda" ColumnName="Cod_tipo_vivienda" />
+                <ScalarProperty Name="Descripcion_tipo" ColumnName="Descripcion_tipo" />
+                <ScalarProperty Name="Foto" ColumnName="Foto" />
+                <ScalarProperty Name="NombreProvincia" ColumnName="NombreProvincia" />
+                <ScalarProperty Name="ApellidoCliente" ColumnName="ApellidoCliente" />
+                <ScalarProperty Name="CIUDAD_CLIENTE" ColumnName="CIUDAD_CLIENTE" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Dni" ColumnName="Dni" />
+                <ScalarProperty Name="EmailCliente" ColumnName="EmailCliente" />
+                <ScalarProperty Name="NombreCliente" ColumnName="NombreCliente" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="PrecioActivo" ColumnName="PrecioActivo" />
+                <ScalarProperty Name="PrecioAnterior" ColumnName="PrecioAnterior" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -30,9 +30,11 @@ namespace RepositorioRentFlat.Repositories
         void ModificarUsuario(Usuarios modelo);
         void InsertarUsuarios(Usuarios modelo);
         void EliminarUsuario(int id);
+        Dictionary<int, String> ComboRolUsuario();
+
         //--------------------------------------------VIVIENDAS
         List<Viviendas> GetViviendas();
-        List<Viviendas> GetViviendasByFilter(int TipoVivienda, int Costa, int Banios, int Habitaciones);
+        List<VIVIENDASPORFILTRO_Result> GetViviendasByFilter(int TipoVivienda, int Costa, int Banios, int Habitaciones,int Cod_Casa, int Cod_Cliente);
         Viviendas BuscarViviendas(int id);
         void ModificarVivienda(Viviendas modelo);
         void InsertarViviendas(Viviendas modelo);

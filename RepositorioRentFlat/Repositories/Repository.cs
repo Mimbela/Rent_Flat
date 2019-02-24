@@ -58,6 +58,17 @@ namespace RepositorioRentFlat.Repositories
             return consulta.FirstOrDefault();
         }
 
+        public Dictionary<int, string> ComboRolUsuario()
+        {
+            Dictionary<int, string> listaPerfiles = new Dictionary<int, string>();//el primer valor que es la key es única
+            listaPerfiles.Add(15, "Director");
+            listaPerfiles.Add(30, "Comercial");
+            
+            
+
+            return listaPerfiles;
+        }
+
         public void EliminarCosta(int id)
         {
             Costas costas = this.BuscarCosta(id);
@@ -137,18 +148,33 @@ namespace RepositorioRentFlat.Repositories
             return this.entidad.Viviendas.ToList();
         }
 
-        public List<Viviendas> GetViviendasByFilter(int TipoVivienda, int Costa, int Banios, int Habitaciones)
+        public List<VIVIENDASPORFILTRO_Result> GetViviendasByFilter(int TipoVivienda, int Costa, int Banios, int Habitaciones, int Cod_Casa, int Cod_Cliente)
         {
-
-            List<Viviendas> listaViviendas = this.entidad.Viviendas.Where(x => 
-                (TipoVivienda == 0 || x.Cod_TipoVivienda == TipoVivienda) 
-                && (Costa == 0 || x.Cod_Provincia == Costa) 
-                && (Banios == 0 || x.Num_banios >= Banios) 
-                && (Habitaciones == 0 || x.Num_habitaciones >= Habitaciones)).ToList();
-
-
-            return listaViviendas;
+            return (this.entidad.VIVIENDASPORFILTRO(TipoVivienda, Costa, Banios, Habitaciones, Cod_Casa, Cod_Cliente).ToList());
         }
+
+        //public List<VIVIENDASPORFILTRO1_Result> GetViviendasByFilter(int TipoVivienda, int Costa, int Banios, int Habitaciones)
+        //{
+        //    return (this.entidad.VIVIENDASPORFILTRO1(TipoVivienda, Costa, Banios, Habitaciones).ToList());
+        //}
+
+        //public List<VIVIENDASPORFILTRO_Result> GetViviendasByFilter(int TipoVivienda, int Costa, int Banios, int Habitaciones)
+        //{
+        //    return (this.entidad.VIVIENDASPORFILTRO( TipoVivienda,  Costa,  Banios,  Habitaciones).ToList());
+        //}
+
+        //public List<Viviendas> GetViviendasByFilter(int TipoVivienda, int Costa, int Banios, int Habitaciones)
+        //{
+
+        //    List<Viviendas> listaViviendas = this.entidad.Viviendas.Where(x => 
+        //        (TipoVivienda == 0 || x.Cod_TipoVivienda == TipoVivienda) 
+        //        && (Costa == 0 || x.Cod_Provincia == Costa) 
+        //        && (Banios == 0 || x.Num_banios >= Banios) 
+        //        && (Habitaciones == 0 || x.Num_habitaciones >= Habitaciones)).ToList();
+
+
+        //    return listaViviendas;
+        //}
 
         public void InsertarCosta(Costas modelo)
         {
@@ -194,7 +220,7 @@ namespace RepositorioRentFlat.Repositories
             Viviendas v = new Viviendas();
             v.Ciudad = modelo.Ciudad;
             v.Codigo_Posta = modelo.Codigo_Posta;
-            v.Cod_casa = modelo.Cod_casa;
+            //v.Cod_casa = modelo.Cod_casa;
             v.Cod_Provincia = modelo.Cod_Provincia;
             v.Descripcion = modelo.Descripcion;
             v.Garaje = modelo.Garaje;
@@ -203,6 +229,8 @@ namespace RepositorioRentFlat.Repositories
             v.Num_habitaciones = modelo.Num_habitaciones;
             v.Tamanio_vivienda = modelo.Tamanio_vivienda;
             v.Ubicacion = modelo.Ubicacion;
+            v.Cod_TipoVivienda = 15
+                ;
 
             this.entidad.Viviendas.Add(v);
             this.entidad.SaveChanges();
@@ -265,6 +293,7 @@ namespace RepositorioRentFlat.Repositories
             tipo.Num_habitaciones = modelo.Num_banios;
             tipo.Tamanio_vivienda = modelo.Tamanio_vivienda;
             tipo.Ubicacion = modelo.Ubicacion;
+            tipo.Cod_TipoVivienda = modelo.Cod_TipoVivienda;
 
             this.entidad.SaveChanges();
         }
