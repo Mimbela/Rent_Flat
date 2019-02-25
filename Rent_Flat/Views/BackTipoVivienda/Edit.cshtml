@@ -5,20 +5,15 @@
     Layout = "~/Views/Shared/PlantillaBack.cshtml";
 }
 
-<h2>Edit</h2>
+<h2 style="color:red">Modificar tipo de vivienda</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Tipos_Vivienda</h4>
-        <hr />
-        <div class="card">
-            <div class="card-header">
-                hika
-            </div>
 
+        <div class="card">
             <div class="card-body">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                 <div class="form-group">
@@ -39,7 +34,7 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Save" class="btn btn-default" />
+                        <input type="submit" value="Modificar" class="btn btn-warning" />
                     </div>
                 </div>
             </div>
@@ -48,5 +43,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "GetTiposVivienda")
+    @Html.ActionLink("Volver", "GetTiposVivienda")
 </div>

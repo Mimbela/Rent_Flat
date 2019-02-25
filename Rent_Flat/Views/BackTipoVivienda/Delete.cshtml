@@ -5,20 +5,16 @@
     Layout = "~/Views/Shared/PlantillaBack.cshtml";
 }
 
-<h2>Delete</h2>
+<h2 style="color:red">Eliminar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>¿Estás seguro que quieres eliminar?</h3>
 <div>
-    <h4>Tipos_Vivienda</h4>
+   
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Cod_tipo_vivienda)
-        </dt>
+        
 
-        <dd>
-            @Html.DisplayFor(model => model.Cod_tipo_vivienda)
-        </dd>
+       
 
         <dt>
             @Html.DisplayNameFor(model => model.Descripcion)
@@ -30,12 +26,13 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-    <div class="form-actions no-color">
-        @Html.ActionLink("Eliminar", "EliminarTipoVivienda", new { id = Model.Cod_tipo_vivienda }, new { @class = "btn btn-success" }) |
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+        <div class="form-actions no-color">
+            @Html.ActionLink("Eliminar", "EliminarTipoVivienda", new { id = Model.Cod_tipo_vivienda }, new { @class = "btn btn-success" }) |
+            @Html.ActionLink("Volver", "GetTiposVivienda")
+        </div>
     }
 </div>

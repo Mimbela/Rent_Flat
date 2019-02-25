@@ -6,19 +6,17 @@
     List<SelectListItem> ListaTiposVivienda = ViewBag.listaTiposVivienda;
 }
 
-<h2>Edit</h2>
+<h2 style="color:red">Modificar detalles de las viviendas</h2>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Costas</h4>
-        <hr />
+       
+       
         <div class="card">
-            <div class="card-header">
-                hika
-            </div>
+            
 
             <div class="card-body">
                 <hr />
@@ -129,7 +127,7 @@
 
                 <div class="form-group">
                     <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Save" class="btn btn-default" />
+                        <input type="submit" value="Modificar" class="btn btn-warning" />
                     </div>
                 </div>
             </div>
@@ -138,5 +136,5 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Viviendas")
+    @Html.ActionLink("Volver", "Viviendas")
 </div>
