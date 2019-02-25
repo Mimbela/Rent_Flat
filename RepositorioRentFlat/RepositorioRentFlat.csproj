@@ -51,10 +51,28 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\Clientes.cs">
-      <DependentUpon>EntidadRenting.tt</DependentUpon>
+      <DependentUpon>EntidadAzure.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\Costas.cs">
-      <DependentUpon>EntidadRenting.tt</DependentUpon>
+      <DependentUpon>EntidadAzure.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\database_firewall_rules.cs">
+      <DependentUpon>EntidadAzure.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\EntidadAzure.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntidadAzure.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\EntidadAzure.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntidadAzure.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\EntidadAzure.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EntidadAzure.edmx</DependentUpon>
     </Compile>
     <Compile Include="Context\EntidadRenting.Context.cs">
       <AutoGen>True</AutoGen>
@@ -72,25 +90,31 @@
       <DependentUpon>EntidadRenting.edmx</DependentUpon>
     </Compile>
     <Compile Include="Context\Galeria_Fotos.cs">
-      <DependentUpon>EntidadRenting.tt</DependentUpon>
+      <DependentUpon>EntidadAzure.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\Precios_Vivienda.cs">
-      <DependentUpon>EntidadRenting.tt</DependentUpon>
+      <DependentUpon>EntidadAzure.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\Tipos_Vivienda.cs">
-      <DependentUpon>EntidadRenting.tt</DependentUpon>
+      <DependentUpon>EntidadAzure.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\TODOSCLIENTES.cs">
+      <DependentUpon>EntidadAzure.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\Usuarios.cs">
-      <DependentUpon>EntidadRenting.tt</DependentUpon>
+      <DependentUpon>EntidadAzure.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Context\VISTACLIENTES.cs">
+      <DependentUpon>EntidadAzure.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\VISTATODOSCLIENTES.cs">
-      <DependentUpon>EntidadRenting.tt</DependentUpon>
+      <DependentUpon>EntidadAzure.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\Viviendas.cs">
-      <DependentUpon>EntidadRenting.tt</DependentUpon>
+      <DependentUpon>EntidadAzure.tt</DependentUpon>
     </Compile>
     <Compile Include="Context\VIVIENDASPORFILTRO_Result.cs">
-      <DependentUpon>EntidadRenting.tt</DependentUpon>
+      <DependentUpon>EntidadAzure.tt</DependentUpon>
     </Compile>
     <Compile Include="Repositories\IRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -102,6 +126,13 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>EntidadRenting.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="Context\EntidadAzure.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>EntidadAzure.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Context\EntidadAzure.edmx.diagram">
+      <DependentUpon>EntidadAzure.edmx</DependentUpon>
+    </None>
     <None Include="Context\EntidadRenting.edmx.diagram">
       <DependentUpon>EntidadRenting.edmx</DependentUpon>
     </None>
@@ -111,6 +142,16 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Context\EntidadAzure.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EntidadAzure.edmx</DependentUpon>
+      <LastGenOutput>EntidadAzure.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Context\EntidadAzure.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>EntidadAzure.edmx</DependentUpon>
+      <LastGenOutput>EntidadAzure.cs</LastGenOutput>
+    </Content>
     <Content Include="Context\EntidadRenting.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>EntidadRenting.edmx</DependentUpon>

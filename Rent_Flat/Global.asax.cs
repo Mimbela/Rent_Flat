@@ -36,7 +36,7 @@ namespace Rent_Flat
                 FormsAuthenticationTicket ticket= 
                     FormsAuthentication.Decrypt(datos);//desencriptamos el ticket
                                                        // String[] roles = { ticket.UserData };//los roles del usuario
-                EntidadRenting entidad = new EntidadRenting();
+                EntidadAzure entidad = new EntidadAzure();
                 String empno = ticket.UserData;
                 String username = ticket.Name;//nombre del usuario
 

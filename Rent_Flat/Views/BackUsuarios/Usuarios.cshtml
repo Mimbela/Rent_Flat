@@ -6,23 +6,30 @@
 }
 
 <h2>Usuarios</h2>
+<hr />
+@*<div>
+    <p>
+        @Html.ActionLink("Crear Nuevo Usuario", "Create", new { }, new { @class = "btn btn-warning" })
+    </p>
+</div>*@
 
-<p>
-    @Html.ActionLink("Crear Nuevo Usuario", "Create", new { }, new { @class = "btn btn-outline-primary" })
-</p>
 
 
 <div class="container-fluid">
+    <p>
+        @Html.ActionLink("Crear Nuevo Usuario", "Create", new { }, new { @class = "btn btn-warning" })
+    </p>
+    <hr />
     <div class="row">
         <div class="col-lg-12">
             <div class="table-responsive table--no-card m-b-30">
                 <table class="table table-borderless table-striped table-earning">
                     <thead>
                         <tr>
-                            <th>
+                            @*<th>
 
-                               código de usuario
-                            </th>
+                                   código de usuario
+                                </th>*@
                             <th>
                                 @Html.DisplayNameFor(model => model.Login)
                             </th>
@@ -35,18 +42,18 @@
                             <th>
                                 @Html.DisplayNameFor(model => model.Apellido)
                             </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.DIR)
-                            </th>
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.DIR)
+                                </th>*@
                             <th>
                                 @Html.DisplayNameFor(model => model.Email)
                             </th>
                             <th>
-                                @Html.DisplayNameFor(model => model.Telefono)
+                                Teléfono
                             </th>
-                            <th>
-                                @Html.DisplayNameFor(model => model.Mostrar_info_contacto)
-                            </th>
+                            @*<th>
+                                    @Html.DisplayNameFor(model => model.Mostrar_info_contacto)
+                                </th>*@
                             <th>
                                 @Html.DisplayNameFor(model => model.Perfil)
                             </th>
@@ -58,9 +65,9 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Cod_usuario)
-                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.Cod_usuario)
+                                    </td>*@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Login)
                                 </td>
@@ -73,24 +80,24 @@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Apellido)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.DIR)
-                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.DIR)
+                                    </td>*@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Email)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Telefono)
                                 </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Mostrar_info_contacto)
-                                </td>
+                                @*<td>
+                                        @Html.DisplayFor(modelItem => item.Mostrar_info_contacto)
+                                    </td>*@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Perfil)
                                 </td>
                                 <td>
-                                    @Html.ActionLink("MODIFICAR", "Edit", new { id = item.Cod_usuario }, new { @class = "btn btn-outline-info" }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.Cod_usuario }, new { @class = "btn btn-outline-info" })
+                                    @Html.ActionLink("Modificar", "Edit", new { id = item.Cod_usuario }, new { @class = "btn btn-success btn-sm" }) |
+                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Cod_usuario }, new { @class = "btn btn-danger btn-sm" })
                                 </td>
                             </tr>
                         }

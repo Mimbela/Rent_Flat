@@ -7,10 +7,12 @@
 
 <h2>Costas</h2>
 <hr />
-<p>
-    @Html.ActionLink("Crear Nueva Costa", "Create",new { },new { @class= "btn btn-outline-primary" })
-</p>
+
 <div class="container-fluid">
+    <p>
+        @Html.ActionLink("Crear Nueva Costa", "Create", new { }, new { @class = "btn btn-warning" })
+    </p>
+    <hr />
     <div class="row">
         <div class="col-lg-12">
             <div class="table-responsive table--no-card m-b-30">
@@ -29,19 +31,19 @@
                     <tbody>
                         @foreach (var item in Model)
                         {
-                        <tr>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Cod_Provincia)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.NombreProvincia)
-                            </td>
-                            <td>
-                                @Html.ActionLink("Modificar", "Edit", new { id=item.Cod_Provincia },new { @class= "btn btn-outline-info" }) 
-                                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
-                                @Html.ActionLink("Delete", "Delete", new { id = item.Cod_Provincia }, new { @class = "btn btn-outline-info" })
-                            </td>
-                        </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Cod_Provincia)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NombreProvincia)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Modificar", "Edit", new { id = item.Cod_Provincia }, new { @class = "btn btn-success btn-sm" })
+                                    @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Cod_Provincia }, new { @class = "btn btn-danger btn-sm" })
+                                </td>
+                            </tr>
                         }
                     </tbody>
 

@@ -9,11 +9,11 @@ namespace RepositorioRentFlat.Repositories
 {
     public class Repository : IRepository
     {
-        EntidadRenting entidad;
+        EntidadAzure entidad;
 
 
 
-        public Repository(EntidadRenting entidad)
+        public Repository(EntidadAzure entidad)
         {
             this.entidad = entidad;
         }

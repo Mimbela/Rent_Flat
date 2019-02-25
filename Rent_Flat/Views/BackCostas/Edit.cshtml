@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/PlantillaBack.cshtml";
 }
 
-<h2>Edit</h2>
+<h2 style="color:red">Modificar costa</h2>
 
     @using (Html.BeginForm())
     {
@@ -16,9 +16,9 @@
     <h4>Costas</h4>
     <hr />
     <div class="card">
-        <div class="card-header">
+        @*<div class="card-header">
             hika
-        </div>
+        </div>*@
 
         <div class="card-body">
 
@@ -42,7 +42,7 @@
 
             <div class="form-group">
                 <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Save" class="btn btn-default" />
+                    <input type="submit" value="Save" class="btn btn-warning" />
                 </div>
             </div>
         </div>
@@ -51,7 +51,7 @@
     }
 
     <div>
-        @Html.ActionLink("Back to List", "Nombre_Costas")
+        @Html.ActionLink("Volver", "Nombre_Costas")
     </div>
 
 
