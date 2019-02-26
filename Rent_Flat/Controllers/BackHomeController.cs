@@ -27,7 +27,7 @@ namespace Rent_Flat.Controllers
         //    return View();
         //}
 
-        //-----------------------------------PAGINACIÓN CLIENTES EN VISTA PARCIAL
+        //-----------------------------------
         public ActionResult Index(int? indice)//lo haré con linq//? son opcionales
         {
             if (indice==null)

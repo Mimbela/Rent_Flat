@@ -22,7 +22,9 @@ namespace Rent_Flat.Controllers
         // GET: BackViviendas
         public ActionResult Viviendas()
         {
+
             
+
             return View(this.repo.GetViviendas());
         }
         //-------------------------------------------------
@@ -71,10 +73,13 @@ namespace Rent_Flat.Controllers
         {
             string fileContent = string.Empty;
             string fileContentType = string.Empty;
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || ImgData == null)
             {
+                var list = this.repo.GetTiposViviendas().Select(x => new SelectListItem() { Value = x.Cod_tipo_vivienda.ToString(), Text = x.Descripcion });
 
-                ViewBag.ListaTiposViviendaCreate.AddRange(this.repo.GetTiposViviendas().Select(x => new SelectListItem() { Value = x.Cod_tipo_vivienda.ToString(), Text = x.Descripcion }));
+
+                ViewBag.ListaTiposViviendaCreate = new List<SelectListItem>();
+                ViewBag.ListaTiposViviendaCreate.AddRange(list);
                 return View(u);
             }
             byte[] foto = new byte[ImgData.InputStream.Length];

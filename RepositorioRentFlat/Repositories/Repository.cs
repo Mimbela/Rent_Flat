@@ -145,8 +145,18 @@ namespace RepositorioRentFlat.Repositories
 
         public List<Viviendas> GetViviendas()
         {
+            
+                        
             return this.entidad.Viviendas.ToList();
         }
+
+        //totalregistros = entidad.VISTATODOSCLIENTES.Count();
+        //    var consulta = (from datos in entidad.VISTATODOSCLIENTES
+        //                    orderby datos.ApellidoCliente ascending
+        //                    select datos).Skip(indice).Take(5).ToList();
+        //    //totalregistros = consulta.Count();
+
+        //    return consulta;
 
         public List<VIVIENDASPORFILTRO_Result> GetViviendasByFilter(int TipoVivienda, int Costa, int Banios, int Habitaciones, int Cod_Casa, int Cod_Cliente)
         {

@@ -1,4 +1,5 @@
 ﻿using Rent_Flat.Atributos;
+using Rent_Flat.Services;
 using RepositorioRentFlat.Context;
 using RepositorioRentFlat.Repositories;
 using System;
@@ -29,6 +30,10 @@ namespace Rent_Flat.Controllers
         //GET:EDIT
         public ActionResult Edit(int id)
         {
+            var usuario = this.repo.BuscarUsuario(id);
+            usuario.Password = string.Empty;
+
+
             return View(this.repo.BuscarUsuario(id));
 
         }
@@ -39,6 +44,10 @@ namespace Rent_Flat.Controllers
             {
                 return View(u);
             }
+            var encodingService = new EncodingService();
+
+            u.Password = encodingService.SHA256(u.Password);
+
             this.repo.ModificarUsuario(u);
             return RedirectToAction("Usuarios");
         }
@@ -67,9 +76,8 @@ namespace Rent_Flat.Controllers
         public ActionResult Create(Usuarios u)
         {
             var algo = this.repo.ComboRolUsuario();
-
-            u.Perfil = algo.ContainsKey(u.DIR) ? algo[u.DIR] : null;
-
+            var encodingService = new EncodingService();
+            
 
             if (!ModelState.IsValid)
             {
@@ -83,8 +91,13 @@ namespace Rent_Flat.Controllers
                     };
                     listaDePerfiles.Add(Perfil);
                 }
+                ViewBag.ListaPerfiles = new List<SelectListItem>();
+                ViewBag.ListaPerfiles = listaDePerfiles;
                 return View(u);
             }
+            u.Perfil = algo.ContainsKey(u.DIR) ? algo[u.DIR] : null;
+            u.Password = encodingService.SHA256(u.Password);
+
             this.repo.InsertarUsuarios(u);
             return RedirectToAction("Usuarios");
         }

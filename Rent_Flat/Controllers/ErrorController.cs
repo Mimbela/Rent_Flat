@@ -14,7 +14,7 @@ namespace Rent_Flat.Controllers
         {
             
             Response.StatusCode = 401;
-            ViewBag.Mensaje = "Página no encontrada en el servidor.";
+            ViewBag.Mensaje = "No tienes permiso para acceder a este recurso";
             return View();
     }
 

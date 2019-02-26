@@ -61,6 +61,13 @@ namespace Rent_Flat.Controllers
             var resultado = this.repo.GetViviendasByFilter(busqueda.TiposViviendaSelectedValue, busqueda.CostasSelectedValue, busqueda.NumeroBaniosSelectedValue, busqueda.NumeroHabitacionesSelectedValue, busqueda.Cod_Casa, busqueda.Cod_Cliente);
             return View(resultado);
         }
+
+        public ActionResult ListaPisosPorFiltroLoad(int idCosta)
+        {
+            BusquedaModel busqueda = new BusquedaModel();
+            var resultado = this.repo.GetViviendasByFilter(busqueda.TiposViviendaSelectedValue, idCosta, busqueda.NumeroBaniosSelectedValue, busqueda.NumeroHabitacionesSelectedValue, busqueda.Cod_Casa, busqueda.Cod_Cliente);
+            return View("~/Views/Home/ListaPisosPorFiltro.cshtml",resultado);
+        }
     }
 }
 

@@ -1,4 +1,5 @@
-﻿using RepositorioRentFlat.Context;
+﻿using Rent_Flat.Services;
+using RepositorioRentFlat.Context;
 using RepositorioRentFlat.Repositories;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,9 @@ namespace Rent_Flat.Controllers
         [HttpPost]
         public ActionResult Login(String login , String password)
         {
-            Usuarios usuarios = this.repo.ExisteEmpleado(login, password);
+            var encodingService = new EncodingService();
+            var cryptedPassword = encodingService.SHA256(password);
+            Usuarios usuarios = this.repo.ExisteEmpleado(login, cryptedPassword);
             if (usuarios!=null)
             {
                 FormsAuthenticationTicket ticket =
