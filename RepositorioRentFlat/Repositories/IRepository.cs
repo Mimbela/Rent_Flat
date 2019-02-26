@@ -48,10 +48,15 @@ namespace RepositorioRentFlat.Repositories
 
         //----------------------------INDEX
         List<VISTATODOSCLIENTES> PaginarClientes(int indice, ref int totalregistros);
-        
 
 
 
+        //------------------------CLIENTES
+        List<Clientes> GetClientes();
+        Clientes BuscarClientes(int id);
+        void ModificarClientes(Clientes modelo);
+        void InsertarClientes(Clientes modelo);
+        void EliminarClientes(int id);
 
 
 

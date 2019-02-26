@@ -1,0 +1,98 @@
+﻿@model IEnumerable<RepositorioRentFlat.Context.Clientes>
+
+@{
+    ViewBag.Title = "Clientes";
+    Layout = "~/Views/Shared/PlantillaBack.cshtml";
+}
+
+<h2>Clientes</h2>
+<hr />
+<div class="container-fluid">
+
+    <p>
+        @Html.ActionLink("Crear nuevo cliente", "Create", new { }, new { @class = "btn btn-warning" })
+    </p>
+    <hr />
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="table-responsive table--no-card m-b-30">
+
+                <table class="table table-borderless table-striped table-earning">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.IdCliente)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.NombreCliente)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.ApellidoCliente)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.EmailCliente)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Direccion)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Ciudad)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Dni)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.Telefono)
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.IdCliente)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.NombreCliente)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.ApellidoCliente)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.EmailCliente)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Direccion)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Ciudad)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Dni)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Telefono)
+                                </td>
+                                <td>
+                                    @Html.ActionLink("Modificar", "Edit", new { id = item.IdCliente }, new { @class = "btn btn-success btn-sm" }) |
+                                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdCliente }, new { @class = "btn btn-danger btn-sm" })
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+
+
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+
+          

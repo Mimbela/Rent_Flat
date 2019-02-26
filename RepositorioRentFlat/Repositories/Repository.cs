@@ -325,5 +325,63 @@ namespace RepositorioRentFlat.Repositories
 
             return consulta;
         }
+
+        public List<Clientes> GetClientes()
+        {
+            return this.entidad.Clientes.ToList();
+        }
+
+        public Clientes BuscarClientes(int id)
+        {
+            var consulta = from datos in entidad.Clientes
+                           where datos.IdCliente == id
+                           select datos;
+            return consulta.FirstOrDefault();
+        }
+
+        public void ModificarClientes(Clientes modelo)
+        {
+            Clientes tipo = this.entidad.Clientes.Single(z => z.IdCliente == modelo.IdCliente);
+            tipo.Dni = modelo.Dni;
+            tipo.ApellidoCliente = modelo.ApellidoCliente;
+            tipo.Ciudad = modelo.Ciudad;
+            tipo.Direccion = modelo.Direccion;
+            tipo.EmailCliente = modelo.EmailCliente;
+            tipo.IdCliente = modelo.IdCliente;
+            tipo.NombreCliente = modelo.NombreCliente;
+            tipo.Telefono = modelo.Telefono;
+
+            this.entidad.SaveChanges();
+        }
+
+        public void InsertarClientes(Clientes modelo)
+        {
+            Clientes tipo = new Clientes();
+            tipo.Dni = modelo.Dni;
+            tipo.ApellidoCliente = modelo.ApellidoCliente;
+            tipo.Ciudad = modelo.Ciudad;
+            tipo.Direccion = modelo.Direccion;
+            tipo.EmailCliente = modelo.EmailCliente;
+            tipo.IdCliente = modelo.IdCliente;
+            tipo.NombreCliente = modelo.NombreCliente;
+            tipo.Telefono = modelo.Telefono;
+
+            this.entidad.Clientes.Add(tipo);
+            this.entidad.SaveChanges();
+
+         
+        }
+        public void EliminarClientes(int id)
+        {
+            Clientes cl = this.BuscarClientes(id);
+            this.entidad.Clientes.Remove(cl);
+            this.entidad.SaveChanges();
+       
+            
+
+
+        }
     }
+
+  
 }

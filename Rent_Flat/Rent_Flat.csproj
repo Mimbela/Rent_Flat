@@ -469,6 +469,7 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityMvcActivator.cs" />
     <Compile Include="Atributos\AutorizacionUsuariosAttribute.cs" />
+    <Compile Include="Controllers\BackClientesController.cs" />
     <Compile Include="Controllers\BackCostasController.cs" />
     <Compile Include="Controllers\BackHomeController.cs" />
     <Compile Include="Controllers\BackTipoViviendaController.cs" />
@@ -532,7 +533,6 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
     <Content Include="Views\Menu\MainMenu.cshtml" />
     <Content Include="Views\PaginasSecundarias\AcercaDeNosotros.cshtml" />
-    <Content Include="Views\PaginasSecundarias\Contacto.cshtml" />
     <Content Include="Views\PaginasSecundarias\Alquiler.cshtml" />
     <Content Include="Views\Shared\PlantillaBack.cshtml" />
     <Content Include="Views\BackHome\Index.cshtml" />
@@ -558,9 +558,12 @@
     <Content Include="Views\Error\PaginaNoEncontrada.cshtml" />
     <Content Include="Views\Error\ErrorGeneral.cshtml" />
     <Content Include="Views\Home\ListaPisosPorFiltro.cshtml" />
-    <Content Include="Views\BackHome\_PaginarClientes.cshtml" />
     <Content Include="Views\Shared\PlantillaLogin.cshtml" />
     <Content Include="Views\Home\Property.cshtml" />
+    <Content Include="Views\BackClientes\Clientes.cshtml" />
+    <Content Include="Views\BackClientes\Edit.cshtml" />
+    <Content Include="Views\BackClientes\Create.cshtml" />
+    <Content Include="Views\BackClientes\Delete.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

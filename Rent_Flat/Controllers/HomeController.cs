@@ -27,6 +27,8 @@ namespace Rent_Flat.Controllers
             busquedaModel.TiposVivienda.AddRange(tiposVivienda.Select(x => new SelectListItem() { Value = x.Cod_tipo_vivienda.ToString(), Text = x.Descripcion }));
             busquedaModel.ListaCostas.AddRange(costas.Select(x => new SelectListItem() { Value = x.Cod_Provincia.ToString(), Text = x.NombreProvincia }));
 
+            ViewBag.Resumen2 = this.repo.GetViviendas();
+
             return View(busquedaModel);
         }
         [HttpPost]

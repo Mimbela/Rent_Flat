@@ -1,4 +1,5 @@
 ﻿@using System.Web.Optimization
+
 @model IEnumerable<RepositorioRentFlat.Context.VISTATODOSCLIENTES>
 
 @{
@@ -6,90 +7,109 @@
     Layout = "~/Views/Shared/PlantillaBack.cshtml";
     int registros = ViewBag.Registros;
     int numeropagina = 1;
+    
 }
 
-<h2>Index</h2>
-@*@Html.ActionLink("COSTAS", "Nombre_Costas", "BackCostas")
-    @Html.ActionLink("TIPO DE VIVIENDAS", "GetTiposVivienda", "BackTipoVivienda")
-    @Html.ActionLink("USUARIOS", "Usuarios", "BackUsuarios")
-    @Html.ActionLink("INFORMCIÓN DE VIVIENDAS", "Viviendas", "BackViviendas")*@
+<h2>Resumen</h2>
+<section class="p-t-20">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive table-responsive-data2">
+                    <table class="table table-data2">
+                        <thead>
+
+                            <tr>
+                              
+                                <th>
+                                    @Html.DisplayNameFor(model => model.NombreCliente)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ApellidoCliente)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.EmailCliente)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Direccion)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Ciudad)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Dni)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Telefono)
+                                </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="tr-shadow">
+                                   
+                                    <td class="desc">
+                                        @Html.DisplayFor(modelItem => item.NombreCliente)
+                                    </td>
+                                    <td>
+                                        <span class="status--process">
+                                            @Html.DisplayFor(modelItem => item.ApellidoCliente)
+                                        </span>
+
+                                    </td>
+
+                                    <td>
+                                        <span class="block-email">
+                                            @Html.DisplayFor(modelItem => item.EmailCliente)
+                                        </span>
+
+                                    </td>
+                                    <td class="desc">
+                                        @Html.DisplayFor(modelItem => item.Direccion)
+                                    </td>
+                                    <td>
+                                        <span class="status--denied">
+                                            @Html.DisplayFor(modelItem => item.Ciudad)
+                                        </span>
+
+                                    </td>
+                                    <td class="desc">
+                                        @Html.DisplayFor(modelItem => item.Dni)
+                                    </td>
+                                    <td>
+                                        <span class="status--process">
+                                            @Html.DisplayFor(modelItem => item.Telefono)
+                                        </span>
+
+                                    </td>
+                                </tr>
+                                <tr class="spacer"></tr>
+                            }
+                            <tr>
+                                <td colspan="3">
+                                    @for (int i = 1; i < registros; i += 5)
+                                    {
+                                        <span>
+                                            @Html.ActionLink(numeropagina + " | "
+                             , "Index", "BackHome"
+                             , new {
+                                 indice = i
+                             }, null)
+                                        </span>
+                                        numeropagina += 1;
+                                    }
+                                </td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
 
-@*@{Html.RenderAction("_PaginarClientes");}*@
 
-<table class="table-responsive table-responsive-data2">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IdCliente)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NombreCliente)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ApellidoCliente)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.EmailCliente)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Direccion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ciudad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Dni)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Telefono)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdCliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreCliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ApellidoCliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EmailCliente)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Direccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ciudad)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Dni)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-        </tr>
-
-    }
-    <tr>
-        <td colspan="3">
-            @for (int i = 1; i < registros; i += 5)
-            {
-                <span>
-                    @Html.ActionLink(numeropagina + " | "
-     , "Index", "BackHome"
-     , new {
-         indice = i
-     }, null)
-                </span>
-                numeropagina += 1;
-            }
-        </td>
-    </tr>
-
-</table>
