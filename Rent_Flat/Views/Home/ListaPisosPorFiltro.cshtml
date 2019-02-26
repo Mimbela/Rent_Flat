@@ -24,11 +24,23 @@
             {
                 <!-- Property -->
                 <div class="col-xl-4 col-lg-6 property_col">
-                    <div class="property" >
-                        @*<div class="property_image">
-                            <img src="images/property_1.jpg" alt="">
-                            <div class="tag_featured property_tag"><a href="#">Featured</a></div>
-                        </div>*@
+                    
+                    <div class="property">
+                        @if (item.ViviendaImagen != null)
+                        {
+                            <div class="property_image">
+                                <img src="data:image;base64,@System.Convert.ToBase64String(item.ViviendaImagen)" alt="">
+                                <div class="tag_featured property_tag"><a href="#">Featured</a></div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="property_image">
+                                <img src="" alt="">
+                                <div class="tag_featured property_tag"><a href="#">Featured</a></div>
+                            </div>
+                        }
+
                         <div class="property_body text-center" style="height:200px">
                             <div class="property_location">@item.NombreProvincia</div>
                             <div class="property_title"><a href="@Url.Action("Property",new { cod_casa = item.Cod_casa })">@item.Ubicacion | @item.Ciudad</a></div>

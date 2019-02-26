@@ -127,16 +127,16 @@ namespace RepositorioRentFlat.Repositories
         }
 
         public List<Costas> GetNombreCostas()
-                {
-                    return this.entidad.Costas.ToList();
-                }
+        {
+            return this.entidad.Costas.ToList();
+        }
         
 
       
          public List<Tipos_Vivienda> GetTiposViviendas()
-                {
-                    return this.entidad.Tipos_Vivienda.ToList();
-                }
+        {
+            return this.entidad.Tipos_Vivienda.ToList();
+        }
 
         public List<Usuarios> GetUsuarios()
         {
@@ -215,7 +215,7 @@ namespace RepositorioRentFlat.Repositories
 
         }
 
-        public void InsertarViviendas(Viviendas modelo)
+        public int InsertarViviendas(Viviendas modelo)
         {
             Viviendas v = new Viviendas();
             v.Ciudad = modelo.Ciudad;
@@ -229,12 +229,29 @@ namespace RepositorioRentFlat.Repositories
             v.Num_habitaciones = modelo.Num_habitaciones;
             v.Tamanio_vivienda = modelo.Tamanio_vivienda;
             v.Ubicacion = modelo.Ubicacion;
-            v.Cod_TipoVivienda = 15
-                ;
+            v.Cod_TipoVivienda = modelo.Cod_TipoVivienda;
+                
 
             this.entidad.Viviendas.Add(v);
+
             this.entidad.SaveChanges();
 
+            return v.Cod_casa;
+
+        }
+
+        public int InsertarImagen(Galeria_Fotos model)
+        {
+            Galeria_Fotos galeria = new Galeria_Fotos();
+            galeria.Cod_casa = model.Cod_casa;
+            galeria.Foto = model.Foto;
+            galeria.Orden = model.Orden;
+
+            this.entidad.Galeria_Fotos.Add(galeria);
+
+            this.entidad.SaveChanges();
+
+            return galeria.Cod_imagen;
         }
 
 

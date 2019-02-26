@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Rent_Flat_BBDDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Rent_Flat_BBDDModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012.Azure" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Clientes">
           <Key>
             <PropertyRef Name="IdCliente" />
@@ -218,8 +218,7 @@ warning 6002: The table/view 'Rent_Flat_BBDD.sys.database_firewall_rules' does n
     FROM [sys].[database_firewall_rules] AS [database_firewall_rules]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Rent_Flat_BBDDModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -400,19 +399,20 @@ warning 6002: The table/view 'Rent_Flat_BBDD.sys.database_firewall_rules' does n
           <Property Type="Int32" Name="Num_habitaciones" Nullable="false" />
           <Property Type="Int32" Name="Tamanio_vivienda" Nullable="false" />
           <Property Type="String" Name="Ubicacion" Nullable="false" MaxLength="150" />
-          <Property Type="Int32" Name="Cod_tipo_vivienda" Nullable="false" />
+          <Property Type="Int32" Name="Cod_tipo_vivienda" Nullable="true" />
           <Property Type="String" Name="Descripcion_tipo" Nullable="true" />
           <Property Type="Binary" Name="Foto" Nullable="true" MaxLength="Max" />
-          <Property Type="String" Name="NombreProvincia" Nullable="false" MaxLength="50" />
-          <Property Type="String" Name="ApellidoCliente" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NombreProvincia" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="ApellidoCliente" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="CIUDAD_CLIENTE" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Direccion" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="Dni" Nullable="true" MaxLength="50" />
           <Property Type="String" Name="EmailCliente" Nullable="true" MaxLength="150" />
-          <Property Type="String" Name="NombreCliente" Nullable="false" MaxLength="50" />
+          <Property Type="String" Name="NombreCliente" Nullable="true" MaxLength="50" />
           <Property Type="Int32" Name="Telefono" Nullable="true" />
           <Property Type="Decimal" Name="PrecioActivo" Nullable="true" Precision="18" Scale="2" />
           <Property Type="Decimal" Name="PrecioAnterior" Nullable="true" Precision="18" Scale="2" />
+          <Property Type="Binary" Name="ViviendaImagen" Nullable="true" MaxLength="Max" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
@@ -589,6 +589,7 @@ warning 6002: The table/view 'Rent_Flat_BBDD.sys.database_firewall_rules' does n
                 <ScalarProperty Name="Telefono" ColumnName="Telefono" />
                 <ScalarProperty Name="PrecioActivo" ColumnName="PrecioActivo" />
                 <ScalarProperty Name="PrecioAnterior" ColumnName="PrecioAnterior" />
+                <ScalarProperty Name="ViviendaImagen" ColumnName="ViviendaImagen" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

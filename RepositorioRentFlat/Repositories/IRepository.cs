@@ -37,8 +37,9 @@ namespace RepositorioRentFlat.Repositories
         List<VIVIENDASPORFILTRO_Result> GetViviendasByFilter(int TipoVivienda, int Costa, int Banios, int Habitaciones,int Cod_Casa, int Cod_Cliente);
         Viviendas BuscarViviendas(int id);
         void ModificarVivienda(Viviendas modelo);
-        void InsertarViviendas(Viviendas modelo);
+        int InsertarViviendas(Viviendas modelo);
         void EliminarViviendas(int id);
+        int InsertarImagen(Galeria_Fotos model);
         //-------------------------------------------LOGIN-VALIDACIONES
         Usuarios ExisteEmpleado(String login, String password);
         List<Usuarios> GetEmpleadosSubordinaros(int director);

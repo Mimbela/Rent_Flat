@@ -483,6 +483,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BusquedaModel.cs" />
+    <Compile Include="Models\Galeria_FotosViewModel.cs" />
+    <Compile Include="Models\ViviendasViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

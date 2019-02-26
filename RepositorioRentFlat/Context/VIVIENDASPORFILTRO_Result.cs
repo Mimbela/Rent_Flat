@@ -25,7 +25,7 @@ namespace RepositorioRentFlat.Context
         public int Num_habitaciones { get; set; }
         public int Tamanio_vivienda { get; set; }
         public string Ubicacion { get; set; }
-        public int Cod_tipo_vivienda { get; set; }
+        public Nullable<int> Cod_tipo_vivienda { get; set; }
         public string Descripcion_tipo { get; set; }
         public byte[] Foto { get; set; }
         public string NombreProvincia { get; set; }
@@ -38,5 +38,6 @@ namespace RepositorioRentFlat.Context
         public Nullable<int> Telefono { get; set; }
         public Nullable<decimal> PrecioActivo { get; set; }
         public Nullable<decimal> PrecioAnterior { get; set; }
+        public byte[] ViviendaImagen { get; set; }
     }
 }
