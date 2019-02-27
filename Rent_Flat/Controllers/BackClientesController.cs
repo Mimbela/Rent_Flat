@@ -28,7 +28,16 @@ namespace Rent_Flat.Controllers
         [AutorizacionUsuarios(Roles = "Director")]
         public ActionResult Edit(int id)
         {
+            List<SelectListItem> comboviviendas = new List<SelectListItem>();
+            foreach (var item in this.repo.GetNombreCostas())
+            {
+                SelectListItem costa = new SelectListItem();
+                costa.Value = item.NombreProvincia;
+                costa.Text = item.NombreProvincia;
+                comboviviendas.Add(costa);
 
+            }
+            ViewBag.ComboCostas = comboviviendas;
             return View(this.repo.BuscarClientes(id));
         }
         [HttpPost]
@@ -37,9 +46,22 @@ namespace Rent_Flat.Controllers
         {
             if (!ModelState.IsValid)
             {
+                List<SelectListItem> comboviviendas = new List<SelectListItem>();
+                foreach (var item in this.repo.GetNombreCostas())
+                {
+                    SelectListItem costa = new SelectListItem();
+                    costa.Value = item.NombreProvincia;
+                    costa.Text = item.NombreProvincia;
+                    comboviviendas.Add(costa);
+
+                }
+                ViewBag.ComboCostas = comboviviendas;
                 return View(c);
             }
             this.repo.ModificarClientes(c);
+
+
+
             return RedirectToAction("Clientes");
         }
 
@@ -49,6 +71,16 @@ namespace Rent_Flat.Controllers
         [AutorizacionUsuarios(Roles = "Director")]
         public ActionResult Create()
         {
+            List<SelectListItem> comboviviendas = new List<SelectListItem>();
+            foreach (var item in this.repo.GetNombreCostas())
+            {
+                SelectListItem costa = new SelectListItem();
+                costa.Value = item.NombreProvincia;
+                costa.Text = item.NombreProvincia;
+                comboviviendas.Add(costa);
+
+            }
+            ViewBag.ComboCostas = comboviviendas;
             return View(new Clientes());
         }
         [HttpPost]
@@ -56,6 +88,16 @@ namespace Rent_Flat.Controllers
         {
             if (!ModelState.IsValid)
             {
+                List<SelectListItem> comboviviendas = new List<SelectListItem>();
+                foreach (var item in this.repo.GetNombreCostas())
+                {
+                    SelectListItem costa = new SelectListItem();
+                    costa.Value = item.NombreProvincia;
+                    costa.Text = item.NombreProvincia;
+                    comboviviendas.Add(costa);
+
+                }
+                ViewBag.ComboCostas = comboviviendas;
                 return View(cl);
             }
             this.repo.InsertarClientes(cl);

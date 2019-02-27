@@ -32,17 +32,96 @@ namespace Rent_Flat.Controllers
         [Authorize(Roles = "Director")]
         public ActionResult Edit(int id)
         {
+
+          //  var listaTiposVivienda = new List<SelectListItem>();
+
             var listaTiposVivienda = new List<SelectListItem>();
-            listaTiposVivienda.AddRange(this.repo.GetTiposViviendas().Select(x => new SelectListItem() { Value = x.Cod_tipo_vivienda.ToString(), Text = x.Descripcion }));
+            foreach (var item in this.repo.GetTiposViviendas())
+            {
+                SelectListItem tipoVivienda = new SelectListItem();
+                tipoVivienda.Value = item.Cod_tipo_vivienda.ToString();
+                tipoVivienda.Text = item.Descripcion;
+                listaTiposVivienda.Add(tipoVivienda);
+            }
+
+            List<SelectListItem> comboviviendas = new List<SelectListItem>();
+            foreach (var item in this.repo.GetNombreCostas())
+            {
+                SelectListItem costa = new SelectListItem();
+                costa.Value = item.Cod_Provincia.ToString();
+                costa.Text = item.NombreProvincia;
+                comboviviendas.Add(costa);
+
+            }
+           
+
+            List<SelectListItem> comboclientes = new List<SelectListItem>();
+            foreach (var item in this.repo.GetClientes())
+            {
+                SelectListItem cliente = new SelectListItem();
+                cliente.Value = item.IdCliente.ToString();
+                cliente.Text = item.NombreCliente + " " + item.ApellidoCliente;
+                comboclientes.Add(cliente);
+
+            }
+
+            ViewBag.ComboCostas = comboviviendas;
+            ViewBag.comboclientes = comboclientes;
             ViewBag.listaTiposVivienda = listaTiposVivienda;
+
+
+            //  listaTiposVivienda.AddRange(this.repo.GetTiposViviendas().Select(x => new SelectListItem() { Value = x.Cod_tipo_vivienda.ToString(), Text = x.Descripcion }));
+            //  ViewBag.ListaTiposViviendaCreate = listaTiposVivienda;
+
+            //  listaTiposVivienda.AddRange(this.repo.GetTiposViviendas().Select(x => new SelectListItem() { Value = x.Cod_tipo_vivienda.ToString(), Text = x.Descripcion }));
+
             return View(this.repo.BuscarViviendas(id));
 
         }
         [HttpPost]
         public ActionResult Edit(Viviendas v)
         {
+           
+            List<SelectListItem> comboviviendas = new List<SelectListItem>();
+            foreach (var item in this.repo.GetNombreCostas())
+            {
+                SelectListItem costa = new SelectListItem();
+                costa.Value = item.Cod_Provincia.ToString();
+                costa.Text = item.NombreProvincia;
+                comboviviendas.Add(costa);
+
+            }
+            ViewBag.ComboCostas = comboviviendas;
+            v.Ciudad = comboviviendas.Where(x => x.Value == v.Cod_Provincia.ToString()).Select(x => x.Text).FirstOrDefault();
+
             if (!ModelState.IsValid)
             {
+                var listaTiposVivienda = new List<SelectListItem>();
+                foreach (var item in this.repo.GetTiposViviendas())
+                {
+                    SelectListItem tipoVivienda = new SelectListItem();
+                    tipoVivienda.Value = item.Cod_tipo_vivienda.ToString();
+                    tipoVivienda.Text = item.Descripcion;
+                    listaTiposVivienda.Add(tipoVivienda);
+                }
+
+              
+
+
+                List<SelectListItem> comboclientes = new List<SelectListItem>();
+                foreach (var item in this.repo.GetClientes())
+                {
+                    SelectListItem cliente = new SelectListItem();
+                    cliente.Value = item.IdCliente.ToString();
+                    cliente.Text = item.NombreCliente + " " + item.ApellidoCliente;
+                    comboclientes.Add(cliente);
+
+                }
+
+                
+                ViewBag.comboclientes = comboclientes;
+                ViewBag.listaTiposVivienda = listaTiposVivienda;
+
                 return View(v);
             }
             this.repo.ModificarVivienda(v);
@@ -68,14 +147,26 @@ namespace Rent_Flat.Controllers
             {
                 SelectListItem costa = new SelectListItem();
                 costa.Value = item.Cod_Provincia.ToString();
-                costa.Value = item.NombreProvincia;
+                costa.Text = item.NombreProvincia;
                 comboviviendas.Add(costa);
 
             }
             ViewBag.ComboCostas = comboviviendas;
 
+            List<SelectListItem> comboclientes = new List<SelectListItem>();
+            foreach (var item in this.repo.GetClientes())
+            {
+                SelectListItem cliente = new SelectListItem();
+                cliente.Value = item.IdCliente.ToString();
+                cliente.Text = item.NombreCliente + " "+ item.ApellidoCliente;
+                comboclientes.Add(cliente);
 
-          //  listaTiposVivienda.AddRange(this.repo.GetTiposViviendas().Select(x => new SelectListItem() { Value = x.Cod_tipo_vivienda.ToString(), Text = x.Descripcion }));
+            }
+            ViewBag.comboclientes = comboclientes;
+
+
+
+            //  listaTiposVivienda.AddRange(this.repo.GetTiposViviendas().Select(x => new SelectListItem() { Value = x.Cod_tipo_vivienda.ToString(), Text = x.Descripcion }));
             ViewBag.ListaTiposViviendaCreate = listaTiposVivienda;
             return View(new ViviendasViewModel(){});
         }
@@ -84,8 +175,33 @@ namespace Rent_Flat.Controllers
         {
             string fileContent = string.Empty;
             string fileContentType = string.Empty;
+
+            List<SelectListItem> comboviviendas = new List<SelectListItem>();
+            foreach (var item in this.repo.GetNombreCostas())
+            {
+                SelectListItem costa = new SelectListItem();
+                costa.Value = item.Cod_Provincia.ToString();
+                costa.Text = item.NombreProvincia;
+                comboviviendas.Add(costa);
+
+            }
+            ViewBag.ComboCostas = comboviviendas;
+            u.Ciudad = comboviviendas.Where(x => x.Value == u.Cod_Provincia.ToString()).Select(x=>x.Text).FirstOrDefault();
+            
+
             if (!ModelState.IsValid || ImgData == null)
             {
+                List<SelectListItem> comboclientes = new List<SelectListItem>();
+                foreach (var item in this.repo.GetClientes())
+                {
+                    SelectListItem cliente = new SelectListItem();
+                    cliente.Value = item.IdCliente.ToString();
+                    cliente.Text = item.NombreCliente + " " + item.ApellidoCliente;
+                    comboclientes.Add(cliente);
+
+                }
+                ViewBag.comboclientes = comboclientes;
+
                 var list = this.repo.GetTiposViviendas().Select(x => new SelectListItem() { Value = x.Cod_tipo_vivienda.ToString(), Text = x.Descripcion });
 
 

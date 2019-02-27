@@ -4,6 +4,14 @@
     ViewBag.Title = "Edit";
     Layout = "~/Views/Shared/PlantillaBack.cshtml";
     List<SelectListItem> ListaTiposVivienda = ViewBag.listaTiposVivienda;
+    List<SelectListItem> ComboCostas = ViewBag.ComboCostas;
+    List<SelectListItem> Comboclientes = ViewBag.comboclientes;
+
+
+
+
+
+    
 }
 
 
@@ -28,16 +36,28 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Cod_Provincia, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Cod_Provincia, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Cod_Provincia, "", new { @class = "text-danger" })
+                    @*@Html.EditorFor(model => model.Cod_Provincia, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Cod_Provincia, "", new { @class = "text-danger" })*@
+                    <select name="Cod_Provincia" class="form-control">
+                        @foreach (var c in ComboCostas)
+                        {
+                            <option value="@c.Value">@c.Text</option>
+                        }
+                    </select>
                 </div>
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(model => model.IdCliente, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.IdCliente, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.IdCliente, "", new { @class = "text-danger" })
+                    @*@Html.EditorFor(model => model.IdCliente, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.IdCliente, "", new { @class = "text-danger" })*@
+                    <select name="IdCliente" class="form-control">
+                        @foreach (var i in Comboclientes)
+                        {
+                            <option value="@i.Value">@i.Text</option>
+                        }
+                    </select>
                 </div>
             </div>
 
@@ -57,13 +77,13 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            @*<div class="form-group">
                 @Html.LabelFor(model => model.Ciudad, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Ciudad, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.Ciudad, "", new { @class = "text-danger" })
                 </div>
-            </div>
+            </div>*@
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Num_habitaciones, htmlAttributes: new { @class = "control-label col-md-2" })

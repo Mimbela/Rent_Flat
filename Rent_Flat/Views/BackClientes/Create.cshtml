@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/PlantillaBack.cshtml";
+    List<SelectListItem> ComboCostas = ViewBag.ComboCostas;
 }
 
 <div class="card">
@@ -61,8 +62,15 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Ciudad, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Ciudad, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Ciudad, "", new { @class = "text-danger" })
+                    @*@Html.EditorFor(model => model.Ciudad, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Ciudad, "", new { @class = "text-danger" })*@
+                    <select name="Ciudad" class="form-control">
+                        @foreach (var itemval in ComboCostas)
+                        {
+                            <option value="@itemval.Value">@itemval.Text</option>
+                        }
+
+                    </select>
                 </div>
             </div>
 
