@@ -5,87 +5,92 @@
     Layout = "~/Views/Shared/PlantillaBack.cshtml";
 }
 
-<h2 style="color:red">Eliminar</h2>
 
-<h3>¿Estás seguro que quieres eliminar?</h3>
-<div>
-  
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Ubicacion)
-        </dt>
+<div class="card">
 
-        <dd>
-            @Html.DisplayFor(model => model.Ubicacion)
-        </dd>
+    <div class="card-header">ELIMINAR</div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Codigo_Posta)
-        </dt>
+    <div class="card-body">
 
-        <dd>
-            @Html.DisplayFor(model => model.Codigo_Posta)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ciudad)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ciudad)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Num_habitaciones)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Num_habitaciones)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Num_banios)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Num_banios)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tamanio_vivienda)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tamanio_vivienda)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Garaje)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Garaje)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            @Html.ActionLink("Eliminar", "EliminarViviendas", new { id = Model.Cod_casa }, new { @class = "btn btn-warning" }) |
-
-            @Html.ActionLink("Volver", "Viviendas")
+        <hr />
+        <div class="card-title">
+            <h3 class="text-center title-2">¿Estás seguro que quieres eliminar?</h3>
         </div>
-    }
-</div>
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Ubicacion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Ubicacion)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Codigo_Posta)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Codigo_Posta)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Ciudad)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Ciudad)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Num_habitaciones)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Num_habitaciones)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Num_banios)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Num_banios)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Tamanio_vivienda)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Tamanio_vivienda)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Descripcion)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Garaje)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Garaje)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                @Html.ActionLink("Eliminar", "EliminarViviendas", new { id = Model.Cod_casa }, new { @class = "btn btn-lg btn-info btn-block" }) |
+
+                @Html.ActionLink("Volver", "Viviendas")
+            </div>
+        }
+    </div>

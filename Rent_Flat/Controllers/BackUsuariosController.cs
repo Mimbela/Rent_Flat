@@ -46,6 +46,10 @@ namespace Rent_Flat.Controllers
             }
             var encodingService = new EncodingService();
 
+            if (String.IsNullOrEmpty (u.Password))
+            {
+                return View(u);
+            }
             u.Password = encodingService.SHA256(u.Password);
 
             this.repo.ModificarUsuario(u);

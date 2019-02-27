@@ -7,48 +7,47 @@
                 Layout = "~/Views/Shared/PlantillaBack.cshtml";
 }
 
-<h2 style="color:red">Modificar costa</h2>
+@*<h2 style="color:red">Modificar costa</h2>*@
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
 
-    <div class="form-horizontal">
-        <h4>Costas</h4>
-        <hr />
+   
         <div class="card">
             @*<div class="card-header">
                     hika
                 </div>*@
 
             <div class="card-body">
+                <div class="card-header">Modificar costa:</div>
+                <div class="card-body">
 
-
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Cod_Provincia, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.Cod_Provincia, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                        @Html.ValidationMessageFor(model => model.Cod_Provincia, "", new { @class = "text-danger" })
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Cod_Provincia, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.Cod_Provincia, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.Cod_Provincia, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.NombreProvincia, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.NombreProvincia, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.NombreProvincia, "", new { @class = "text-danger" })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NombreProvincia, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-10">
+                            @Html.EditorFor(model => model.NombreProvincia, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.NombreProvincia, "", new { @class = "text-danger" })
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Modificar" class="btn btn-warning" />
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Modificar" class="btn btn-lg btn-info btn-block" />
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </div>
 }
 

@@ -10,7 +10,7 @@
 
 <div class="container-fluid">
     <p>
-        @Html.ActionLink("Crear nuevo Tipo de Vivienda", "Create", new { }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Registrar Tipo de Vivienda", "Create", new { }, new { @class = "btn btn-warning" })
     </p>
     <hr />
     <div class="row">
@@ -19,9 +19,9 @@
                 <table class="table table-borderless table-striped table-earning">
                     <thead>
                         <tr>
-                            <th>
+                            @*<th>
                                 Código de vivienda
-                            </th>
+                            </th>*@
                             <th>
                                 @Html.DisplayNameFor(model => model.Descripcion)
                             </th>
@@ -32,9 +32,9 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>
+                                @*<td>
                                     @Html.DisplayFor(modelItem => item.Cod_tipo_vivienda)
-                                </td>
+                                </td>*@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Descripcion)
                                 </td>

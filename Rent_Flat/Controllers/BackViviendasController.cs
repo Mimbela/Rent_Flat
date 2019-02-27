@@ -63,6 +63,17 @@ namespace Rent_Flat.Controllers
                 listaTiposVivienda.Add(tipoVivienda);
             }
 
+            List<SelectListItem> comboviviendas = new List<SelectListItem>();
+            foreach (var item in this.repo.GetNombreCostas())
+            {
+                SelectListItem costa = new SelectListItem();
+                costa.Value = item.Cod_Provincia.ToString();
+                costa.Value = item.NombreProvincia;
+                comboviviendas.Add(costa);
+
+            }
+            ViewBag.ComboCostas = comboviviendas;
+
 
           //  listaTiposVivienda.AddRange(this.repo.GetTiposViviendas().Select(x => new SelectListItem() { Value = x.Cod_tipo_vivienda.ToString(), Text = x.Descripcion }));
             ViewBag.ListaTiposViviendaCreate = listaTiposVivienda;

@@ -5,34 +5,40 @@
     Layout = "~/Views/Shared/PlantillaBack.cshtml";
 }
 
-<h2 style="color:red">Eliminar</h2>
 
-<h3>¿Estás seguro que quieres eliminar?</h3>
-<div>
-   
-    <hr />
-    <dl class="dl-horizontal">
-        
 
-       
+<div class="card">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
+    <div class="card-header">ELIMINAR</div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
+    <div class="card-body">
 
-    </dl>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            @Html.ActionLink("Eliminar", "EliminarTipoVivienda", new { id = Model.Cod_tipo_vivienda }, new { @class = "btn btn-success" }) |
-            @Html.ActionLink("Volver", "GetTiposVivienda")
+        <hr />
+        <div class="card-title">
+            <h3 class="text-center title-2">¿Estás seguro que quieres eliminar?</h3>
         </div>
-    }
+
+
+
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Descripcion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Descripcion)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                @Html.ActionLink("Eliminar", "EliminarTipoVivienda", new { id = Model.Cod_tipo_vivienda }, new { @class = "btn btn-lg btn-info btn-block" }) |
+                @Html.ActionLink("Volver", "GetTiposVivienda")
+            </div>
+        }
+    </div>
 </div>

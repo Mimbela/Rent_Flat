@@ -5,69 +5,75 @@
     Layout = "~/Views/Shared/PlantillaBack.cshtml";
 }
 
-<h2 style="color:red">Eliminar</h2>
+<div class="card">
 
-<h3>¿Estás seguro que quieres eliminar?</h3>
-<div>
-    
-    <hr />
-    <dl class="dl-horizontal">
-       
+    <div class="card-header">ELIMINAR</div>
 
-       
-       
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
+    <div class="card-body">
 
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
+        <hr />
+        <div class="card-title">
+            <h3 class="text-center title-2">¿Estás seguro que quieres eliminar?</h3>
+        </div>
+        <dl class="dl-horizontal">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Apellido)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Apellido)
-        </dd>
 
-       
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Nombre)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefono)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Telefono)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Apellido)
+            </dd>
 
-       
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Perfil)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Perfil)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.Email)
+            </dt>
 
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.Email)
+            </dd>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+            <dt>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </dt>
 
-    <div class="form-actions no-color">
-        @Html.ActionLink("Eliminar", "EliminarUsuario", new { id = Model.Cod_usuario }, new { @class = "btn btn-warning" }) |
-        @Html.ActionLink("Volver", "Usuarios")
+            <dd>
+                @Html.DisplayFor(model => model.Telefono)
+            </dd>
+
+
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Perfil)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Perfil)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                @Html.ActionLink("Eliminar", "EliminarUsuario", new { id = Model.Cod_usuario }, new { @class = "btn btn-lg btn-info btn-block" }) |
+                @Html.ActionLink("Volver", "Usuarios")
+            </div>
+        }
     </div>
-    }
 </div>

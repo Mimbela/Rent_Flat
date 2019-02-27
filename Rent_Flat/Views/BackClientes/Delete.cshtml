@@ -4,86 +4,94 @@
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/PlantillaBack.cshtml";
 }
+<div class="card">
 
-<h2 style="color:red">Eliminar</h2>
+    <div class="card-header">ELIMINAR</div>
 
-<h3>¿Estás seguro que quieres eliminar?</h3>
-<div>
-   
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IdCliente)
-        </dt>
+    <div class="card-body">
 
-        <dd>
-            @Html.DisplayFor(model => model.IdCliente)
-        </dd>
+        <hr />
+        <div class="card-title">
+            <h3 class="text-center title-2">¿Estás seguro que quieres eliminar?</h3>
+        </div>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NombreCliente)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.NombreCliente)
-        </dd>
+        <dl class="dl-horizontal">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ApellidoCliente)
-        </dt>
+            @*<dt>
+                @Html.DisplayNameFor(model => model.IdCliente)
+            </dt>*@
 
-        <dd>
-            @Html.DisplayFor(model => model.ApellidoCliente)
-        </dd>
+            @*<dd>
+                @Html.DisplayFor(model => model.IdCliente)
+            </dd>*@
 
-        <dt>
-            @Html.DisplayNameFor(model => model.EmailCliente)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.NombreCliente)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.EmailCliente)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.NombreCliente)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Direccion)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ApellidoCliente)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Direccion)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ApellidoCliente)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Ciudad)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.EmailCliente)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Ciudad)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.EmailCliente)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Dni)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Dni)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Direccion)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefono)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Ciudad)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Telefono)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Ciudad)
+            </dd>
 
-    </dl>
+            <dt>
+                @Html.DisplayNameFor(model => model.Dni)
+            </dt>
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+            <dd>
+                @Html.DisplayFor(model => model.Dni)
+            </dd>
 
-    <div class="form-actions no-color">
-        @Html.ActionLink("Eliminar", "EliminarClientes", new { id = Model.IdCliente }, new { @class = "btn btn-warning" }) |
-        @Html.ActionLink("Volver", "Clientes")
+            <dt>
+                @Html.DisplayNameFor(model => model.Telefono)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Telefono)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                @Html.ActionLink("Eliminar", "EliminarClientes", new { id = Model.IdCliente }, new { @class = "btn btn-lg btn-info btn-block" }) |
+                @Html.ActionLink("Volver", "Clientes")
+            </div>
+        }
     </div>
-    }
 </div>

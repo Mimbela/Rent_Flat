@@ -10,7 +10,7 @@
 <div class="container-fluid">
 
     <p>
-        @Html.ActionLink("Crear nuevo cliente", "Create", new { }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Registrar nuevo cliente", "Create", new { }, new { @class = "btn btn-warning" })
     </p>
     <hr />
     <div class="row">
@@ -20,9 +20,9 @@
                 <table class="table table-borderless table-striped table-earning">
                     <thead>
                         <tr>
-                            <th>
+                            @*<th>
                                 @Html.DisplayNameFor(model => model.IdCliente)
-                            </th>
+                            </th>*@
                             <th>
                                 @Html.DisplayNameFor(model => model.NombreCliente)
                             </th>
@@ -51,9 +51,9 @@
                         @foreach (var item in Model)
                         {
                             <tr>
-                                <td>
+                                @*<td>
                                     @Html.DisplayFor(modelItem => item.IdCliente)
-                                </td>
+                                </td>*@
                                 <td>
                                     @Html.DisplayFor(modelItem => item.NombreCliente)
                                 </td>
